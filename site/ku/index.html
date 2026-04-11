@@ -10,13 +10,14 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body dir="rtl">
+<a href="#main-content" class="skip-link">بچۆ بۆ ناوەڕۆک</a>
 
 <!-- ─── NAV ─── -->
-<nav>
+<nav aria-label="ڕێنیشاندەری سەرەکی">
   <div class="container">
     <a href="#home" class="logo"><span class="diamond">◆</span> کۆنگرەی ئازادی</a>
-    <button class="nav-toggle" aria-label="مێنیو">☰</button>
-    <ul>
+    <button class="nav-toggle" aria-controls="nav-menu" aria-label="مێنیو">☰</button>
+    <ul id="nav-menu">
       <li><a href="#about">دەربارە</a></li>
       <li><a href="#working-groups">گرووپە کارەکان</a></li>
       <li><a href="#governance">ڕێکخستنی بەڕێوەبردن</a></li>
@@ -25,17 +26,19 @@
       <li><a href="#partners">هاوبەشەکان</a></li>
       <li>
         <div class="lang-switch">
-          <a href="../en/">EN</a>
-          <a href="../fa/">فا</a>
-          <a href="../ku/" class="active">کو</a>
-          <a href="../ar/">عر</a>
-          <a href="../bal/">بل</a>
-          <a href="../az/">تۆ</a>
+          <a href="../en/" hreflang="en">EN</a>
+          <a href="../fa/" hreflang="fa">فا</a>
+          <a href="../ku/" hreflang="ckb" class="active">کو</a>
+          <a href="../ar/" hreflang="ar">عر</a>
+          <a href="../bal/" hreflang="bal">بل</a>
+          <a href="../az/" hreflang="az">تۆ</a>
         </div>
       </li>
     </ul>
   </div>
 </nav>
+
+<main id="main-content">
 
 <!-- ─── HERO ─── -->
 <section class="hero" id="home">
@@ -89,22 +92,22 @@
 
     <h3 class="mt-3">ئەم کۆنگرەیە چییە</h3>
     <ul class="redlines">
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> بۆشاییەکی دیجیتاڵ بۆ بەشداری سیاسی ڕێکخراو و بەرهەمدار</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> ڕیتمی بەردەوامی کۆتایی هەفتە بە دەرئەنجامی دیار</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> کراوە بۆ هەموو ئێرانیانێک کە دژی ڕژێمی کۆماری ئیسلامین</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> فرەیی: هەموو نەتەوەکان، زمانەکان، ڕەگەزەکان و گرایشە سیاسییەکان بەخێرهاتوون</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> ئازمایشگای ئامراز و شێوازی دیموکراسی</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> ڕوون: پەخشی ڕاستەوخۆ، بەڵگەنامەکردن، ئەرشیڤ</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> بۆشاییەکی دیجیتاڵ بۆ بەشداری سیاسی ڕێکخراو و بەرهەمدار</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> ڕیتمی بەردەوامی کۆتایی هەفتە بە دەرئەنجامی دیار</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> کراوە بۆ هەموو ئێرانیانێک کە دژی ڕژێمی کۆماری ئیسلامین</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> فرەیی: هەموو نەتەوەکان، زمانەکان، ڕەگەزەکان و گرایشە سیاسییەکان بەخێرهاتوون</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> ئازمایشگای ئامراز و شێوازی دیموکراسی</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> ڕوون: پەخشی ڕاستەوخۆ، بەڵگەنامەکردن، ئەرشیڤ</li>
     </ul>
 
     <h3 class="mt-3">ئەم کۆنگرەیە چی نییە</h3>
     <ul class="redlines">
-      <li><span class="icon-no"><i data-lucide="x"></i></span> دامەزراوەی حکوومەتی یان پەرلەمانی لە دەرەوە نییە</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> هەڵبژاردنی سەرکردە یان ویترینی کەسایەتییەکان نییە</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> هەقی هیچ ڕێکخراو یان لایەنی سیاسی تاکی نییە</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> جێگرەوەی هەوڵی تر نییە — تەواوکەرە بۆ هەمووان</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> بۆشایی بۆ پاراستنەوەی ڕژێم نییە</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> یانەی گفتوگۆ نییە — دەرئەنجام و پابەندی چاوەڕواندەکرێت</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> دامەزراوەی حکوومەتی یان پەرلەمانی لە دەرەوە نییە</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> هەڵبژاردنی سەرکردە یان ویترینی کەسایەتییەکان نییە</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> هەقی هیچ ڕێکخراو یان لایەنی سیاسی تاکی نییە</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> جێگرەوەی هەوڵی تر نییە — تەواوکەرە بۆ هەمووان</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> بۆشایی بۆ پاراستنەوەی ڕژێم نییە</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> یانەی گفتوگۆ نییە — دەرئەنجام و پابەندی چاوەڕواندەکرێت</li>
     </ul>
   </div>
 </section>
@@ -118,42 +121,42 @@
 
     <div class="card-grid">
       <div class="card">
-        <h3><i data-lucide="landmark"></i> نوێنەرایەتی دیپلۆماسی</h3>
+        <h3><i data-lucide="landmark" aria-hidden="true"></i> نوێنەرایەتی دیپلۆماسی</h3>
         <p>دروستکردنی گرووپی نوێنەرایەتی بڕوادار و فرەیی بۆ بابەتە دیپلۆماسییەکانی ئێران لە ئاستی جیهانیدا.</p>
         <span class="tag">گرووپی کار ١ · WG1</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="bar-chart-3"></i> ئامرازی بەشداری خەڵک</h3>
+        <h3><i data-lucide="bar-chart-3" aria-hidden="true"></i> ئامرازی بەشداری خەڵک</h3>
         <p>ئازمون و بەکارهێنانی ئامرازی بەشداری فراوانی هاوڵاتی — ترازش، ڕاپرسی، بەکۆمەڵکردن.</p>
         <span class="tag">گرووپی کار ٢ · WG2</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="wallet"></i> بەشداری دارایی و دیفای</h3>
+        <h3><i data-lucide="wallet" aria-hidden="true"></i> بەشداری دارایی و دیفای</h3>
         <p>مێکانیزمی دارایی پارێزراو و نامەرکەزی — هاوئاهەنگ لەگەڵ چەسپاندنەکان، ڕوون، بودجەبەندی بەشدارانە.</p>
         <span class="tag">گرووپی کار ٣ · WG3</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="shield-check"></i> تۆڕسازی پارێزراو</h3>
+        <h3><i data-lucide="shield-check" aria-hidden="true"></i> تۆڕسازی پارێزراو</h3>
         <p>بەستنەوەی پارێزراوی چالاکوانان، فراوانکردنی تۆڕی ئۆپۆزسیۆن، ڕاهێنان و سەرچاوەی ئەمنیەتی کارکردن.</p>
         <span class="tag">گرووپی کار ٤ · WG4</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="lightbulb"></i> داهێنان و بیرۆکەکان</h3>
+        <h3><i data-lucide="lightbulb" aria-hidden="true"></i> داهێنان و بیرۆکەکان</h3>
         <p>هێڵی کراوە بۆ ڕاکێشان، هەڵسەنگاندن و بەکارهێنانی بیرۆکەی نوێ لە هەرکەسێک، لە هەرکوێیەک.</p>
         <span class="tag">گرووپی کار ٥ · WG5</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="vote"></i> بۆشایی بەشداری سیاسی</h3>
+        <h3><i data-lucide="vote" aria-hidden="true"></i> بۆشایی بەشداری سیاسی</h3>
         <p>دیزاینی پلاتفۆرمی بەشداری بەردەوام — ڕێکخستنی بەڕێوەبردن، خولی بەشداری، بەرپرسیارێتی.</p>
         <span class="tag">گرووپی کار ٦ · WG6</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="scale"></i> چارەسەری ناکۆکی و نێوبژیوانی</h3>
+        <h3><i data-lucide="scale" aria-hidden="true"></i> چارەسەری ناکۆکی و نێوبژیوانی</h3>
         <p>نێوبژیوانی پیشەیی بۆ بۆشایی سیاسی زیانلێکراوی ئێران — پڕۆتۆکۆڵەکان، نێوبژیوانی ڕاهێنراو، نۆژەنکردنەوەی متمانە.</p>
         <span class="tag">گرووپی کار ٧ · WG7</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="monitor"></i> بەرنامە دیجیتاڵەکان</h3>
+        <h3><i data-lucide="monitor" aria-hidden="true"></i> بەرنامە دیجیتاڵەکان</h3>
         <p>حکوومەتی دیجیتاڵ، بەرگری شارستانی و خوێندنی هاوڵاتی — بەرنامەی دیار بە تیمی خۆبەخش.</p>
         <span class="tag">گرووپی کار ٨ · WG8</span>
       </div>
@@ -222,6 +225,7 @@
 
     <div class="table-wrap mt-3">
       <table>
+        <caption>میکانیزمەکانی بەرپرسیاریەتی</caption>
         <thead>
           <tr>
             <th>مێکانیزم</th>
@@ -250,23 +254,23 @@
 
     <div class="card-grid mt-2">
       <div class="card">
-        <h3><i data-lucide="circle-x"></i> هێڵە سوورە بەرزەکان</h3>
+        <h3><i data-lucide="circle-x" aria-hidden="true"></i> هێڵە سوورە بەرزەکان</h3>
         <ul class="redlines">
-          <li><span class="icon-no"><i data-lucide="x"></i></span> پشتگیری لە ڕژێمی کۆماری ئیسلامی</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> بانگەوازی حکومەتی ئایینی</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> ئاشکراکردنی ناسنامەی چالاکوانان</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> قسەی ڕقلێکردن دژی گرووپی نەتەوەیی، ئایینی یان ڕەگەزی</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> ئازار، هەڕەشە، تۆقاندن</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> پشتگیری لە ڕژێمی کۆماری ئیسلامی</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> بانگەوازی حکومەتی ئایینی</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> ئاشکراکردنی ناسنامەی چالاکوانان</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> قسەی ڕقلێکردن دژی گرووپی نەتەوەیی، ئایینی یان ڕەگەزی</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> ئازار، هەڕەشە، تۆقاندن</li>
         </ul>
       </div>
       <div class="card">
-        <h3><i data-lucide="circle-check"></i> بە ئاشکرا بەخێرهاتوو</h3>
+        <h3><i data-lucide="circle-check" aria-hidden="true"></i> بە ئاشکرا بەخێرهاتوو</h3>
         <ul class="redlines">
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> گفتوگۆ لەسەر شێوەی حکوومەتی داهاتوو (کۆمار، مۆنارکی، فیدراڵ)</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> ناکۆکبوون لەسەر ڕۆڵی دەستێوەردانی دەرەکی</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> ڕەخنەلە ستراتیژی ئۆپۆزسیۆنی تر</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> دەربڕینی ناسنامەی نەتەوەیی و ناوچەیی</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> پێشنیاری بیرۆکەی بنەڕەتی لە چوارچێوەی سنوورەکانی سەرەوە</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> گفتوگۆ لەسەر شێوەی حکوومەتی داهاتوو (کۆمار، مۆنارکی، فیدراڵ)</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> ناکۆکبوون لەسەر ڕۆڵی دەستێوەردانی دەرەکی</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> ڕەخنەلە ستراتیژی ئۆپۆزسیۆنی تر</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> دەربڕینی ناسنامەی نەتەوەیی و ناوچەیی</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> پێشنیاری بیرۆکەی بنەڕەتی لە چوارچێوەی سنوورەکانی سەرەوە</li>
         </ul>
       </div>
     </div>
@@ -298,8 +302,8 @@
     </div>
 
     <div class="cta-group mt-3">
-      <a href="https://github.com/tcfev/iran-digital-freedom-congress" class="btn btn-primary" target="_blank">ئەمباری گیتهاب</a>
-      <a href="https://x.com/armantorkzaban" class="btn btn-outline" target="_blank">بەدوادابچۆ لە X دا</a>
+      <a href="https://github.com/tcfev/iran-digital-freedom-congress" class="btn btn-primary" target="_blank" rel="noopener noreferrer">ئەمباری گیتهاب</a>
+      <a href="https://x.com/armantorkzaban" class="btn btn-outline" target="_blank" rel="noopener noreferrer">بەدوادابچۆ لە X دا</a>
     </div>
   </div>
 </section>
@@ -314,17 +318,17 @@
     <div class="card-grid">
       <div class="card">
         <h3>کۆنسۆرسیۆمی جمهور-ئەکادیمیا</h3>
-        <p><a href="https://jomhoor.org/en" target="_blank">جمهور</a> ژێرخانی تەکنەلۆژیای مەدەنی دابین دەکات. <a href="https://iranacademia.com/?lang=en" target="_blank">ئێران ئەکادیمیا</a> توانای لێکۆڵینەوە، خوێندن و دامەزراوەیی دابین دەکات. لەگەڵ یەکتر: ستوونی ستراتیژی.</p>
+        <p><a href="https://jomhoor.org/en" target="_blank" rel="noopener noreferrer">جمهور</a> ژێرخانی تەکنەلۆژیای مەدەنی دابین دەکات. <a href="https://iranacademia.com/?lang=en" target="_blank" rel="noopener noreferrer">ئێران ئەکادیمیا</a> توانای لێکۆڵینەوە، خوێندن و دامەزراوەیی دابین دەکات. لەگەڵ یەکتر: ستوونی ستراتیژی.</p>
         <span class="tag">تەکنەلۆژی + زانست</span>
       </div>
       <div class="card">
         <h3>ئاتلاسی ئێران / TCF e.V.</h3>
-        <p><a href="https://atlasiran.github.io/Atlas-website/" target="_blank">ئاتلاسی ئێران</a> نەخشەی ڕێکخراوەکانی کۆمەڵی مەدەنی. <a href="https://transcf.org" target="_blank">TCF e.V.</a> پارێزەری یاسایی لەژێر یاسای ئاڵمانیا.</p>
+        <p><a href="https://atlasiran.github.io/Atlas-website/" target="_blank" rel="noopener noreferrer">ئاتلاسی ئێران</a> نەخشەی ڕێکخراوەکانی کۆمەڵی مەدەنی. <a href="https://transcf.org" target="_blank" rel="noopener noreferrer">TCF e.V.</a> پارێزەری یاسایی لەژێر یاسای ئاڵمانیا.</p>
         <span class="tag">نەخشەکێشان + یاسایی</span>
       </div>
       <div class="card">
         <h3>کۆنگرەی ئازادی ئێران</h3>
-        <p><a href="https://www.ifcongress.org/" target="_blank">IFCongress</a> — کۆنگرەی لەندەن بە ئەنجوومەنی هاوئاهەنگی ٣٠+ کەس. مەشروعیەتی سیاسی و ڕۆڵی ڕاوێژکاری.</p>
+        <p><a href="https://www.ifcongress.org/" target="_blank" rel="noopener noreferrer">IFCongress</a> — کۆنگرەی لەندەن بە ئەنجوومەنی هاوئاهەنگی ٣٠+ کەس. مەشروعیەتی سیاسی و ڕۆڵی ڕاوێژکاری.</p>
         <span class="tag">مەشروعیەتی سیاسی</span>
       </div>
     </div>
@@ -332,6 +336,7 @@
     <h3 class="mt-3">ستاکی تەکنەلۆژی</h3>
     <div class="table-wrap">
       <table>
+        <caption>تەکنەلۆژیای بەکارهاتوو</caption>
         <thead>
           <tr><th>چین</th><th>ئامراز</th><th>مەبەست</th></tr>
         </thead>
@@ -374,6 +379,12 @@
   </div>
 </section>
 
+</main>
+
+
+
+
+
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="container">
@@ -390,33 +401,33 @@
       <h4>بەشداری</h4>
       <ul>
         <li><a href="#join">بەشداریبکە</a></li>
-        <li><a href="https://github.com/tcfev/iran-digital-freedom-congress" target="_blank">گیتهاب</a></li>
-        <li><a href="https://x.com/armantorkzaban" target="_blank">X / تویتەر</a></li>
+        <li><a href="https://github.com/tcfev/iran-digital-freedom-congress" target="_blank" rel="noopener noreferrer">گیتهاب</a></li>
+        <li><a href="https://x.com/armantorkzaban" target="_blank" rel="noopener noreferrer">X / تویتەر</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>ئیکۆسیستم</h4>
       <ul>
-        <li><a href="https://jomhoor.org/en" target="_blank">جمهور</a></li>
-        <li><a href="https://iranacademia.com/?lang=en" target="_blank">ئێران ئەکادیمیا</a></li>
-        <li><a href="https://atlasiran.github.io/Atlas-website/" target="_blank">ئاتلاسی ئێران</a></li>
-        <li><a href="https://www.ifcongress.org/" target="_blank">IFCongress</a></li>
+        <li><a href="https://jomhoor.org/en" target="_blank" rel="noopener noreferrer">جمهور</a></li>
+        <li><a href="https://iranacademia.com/?lang=en" target="_blank" rel="noopener noreferrer">ئێران ئەکادیمیا</a></li>
+        <li><a href="https://atlasiran.github.io/Atlas-website/" target="_blank" rel="noopener noreferrer">ئاتلاسی ئێران</a></li>
+        <li><a href="https://www.ifcongress.org/" target="_blank" rel="noopener noreferrer">IFCongress</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>زمانەکان</h4>
       <ul>
-        <li><a href="../en/">English</a></li>
-        <li><a href="../fa/">فارسی</a></li>
-        <li><a href="../ku/">کوردی</a></li>
-        <li><a href="../ar/">العربية</a></li>
-        <li><a href="../bal/">بلوچی</a></li>
-        <li><a href="../az/">تۆرکجه</a></li>
+        <li><a href="../en/" hreflang="en">English</a></li>
+        <li><a href="../fa/" hreflang="fa">فارسی</a></li>
+        <li><a href="../ku/" hreflang="ckb">کوردی</a></li>
+        <li><a href="../ar/" hreflang="ar">العربية</a></li>
+        <li><a href="../bal/" hreflang="bal">بلوچی</a></li>
+        <li><a href="../az/" hreflang="az">تۆرکجه</a></li>
       </ul>
     </div>
     <p class="copyright">
       © ٢٠٢٦ کۆنگرەی دیجیتاڵی ئازادی ئێران. سەرچاوە کراوە. بەرگری لە سانسوور.<br>
-      پارێزەر: <a href="https://transcf.org" target="_blank">فیدراسیۆنی کۆمەڵگای فرامرزی (TCF e.V.)</a>
+      پارێزەر: <a href="https://transcf.org" target="_blank" rel="noopener noreferrer">فیدراسیۆنی کۆمەڵگای فرامرزی (TCF e.V.)</a>
     </p>
   </div>
 </footer>
