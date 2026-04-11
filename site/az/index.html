@@ -10,13 +10,14 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body dir="rtl">
+<a href="#main-content" class="skip-link">محتوایا کئچ</a>
 
 <!-- ─── NAV ─── -->
-<nav>
+<nav aria-label="اصلی گزیشمه">
   <div class="container">
     <a href="#home" class="logo"><span class="diamond">◆</span> آزادلیق کنقرەسی</a>
-    <button class="nav-toggle" aria-label="منیو">☰</button>
-    <ul>
+    <button class="nav-toggle" aria-controls="nav-menu" aria-label="منیو">☰</button>
+    <ul id="nav-menu">
       <li><a href="#about">حاقیندا</a></li>
       <li><a href="#working-groups">ایش قروپلاری</a></li>
       <li><a href="#governance">ایدارە</a></li>
@@ -25,17 +26,19 @@
       <li><a href="#partners">اورتاقلار</a></li>
       <li>
         <div class="lang-switch">
-          <a href="../en/">EN</a>
-          <a href="../fa/">فا</a>
-          <a href="../ku/">کو</a>
-          <a href="../ar/">عر</a>
-          <a href="../bal/">بل</a>
-          <a href="../az/" class="active">تۆ</a>
+          <a href="../en/" hreflang="en">EN</a>
+          <a href="../fa/" hreflang="fa">فا</a>
+          <a href="../ku/" hreflang="ckb">کو</a>
+          <a href="../ar/" hreflang="ar">عر</a>
+          <a href="../bal/" hreflang="bal">بل</a>
+          <a href="../az/" hreflang="az" class="active">تۆ</a>
         </div>
       </li>
     </ul>
   </div>
 </nav>
+
+<main id="main-content">
 
 <!-- ─── HERO ─── -->
 <section class="hero" id="home">
@@ -89,22 +92,22 @@
 
     <h3 class="mt-3">بو کنقرە نەدیر</h3>
     <ul class="redlines">
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> تشکیلاتلی و مهصوللو سیاسی ایشتیراک اوچون دیجیتال فضا</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> ملموس نتیجەلرله داوامیلی هفته سونو ریتمی</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> اسلام جمهوریتی رژیمینه قارشی اولان بوتون ایرانلیلارا آچیق</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> چوخچولوق: بوتون ائتنیکلر، دیللر، جینسلر و سیاسی میللر خوش گلميشلر</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> دموکراتیک آلتلر و اوسوللارین آزمایش لابوراتوریاسی</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> شفاف: جانلی یایین، سندلشدیرمه، آرشیو</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> تشکیلاتلی و مهصوللو سیاسی ایشتیراک اوچون دیجیتال فضا</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> ملموس نتیجەلرله داوامیلی هفته سونو ریتمی</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> اسلام جمهوریتی رژیمینه قارشی اولان بوتون ایرانلیلارا آچیق</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> چوخچولوق: بوتون ائتنیکلر، دیللر، جینسلر و سیاسی میللر خوش گلميشلر</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> دموکراتیک آلتلر و اوسوللارین آزمایش لابوراتوریاسی</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> شفاف: جانلی یایین، سندلشدیرمه، آرشیو</li>
     </ul>
 
     <h3 class="mt-3">بو کنقرە نه دئییل</h3>
     <ul class="redlines">
-      <li><span class="icon-no"><i data-lucide="x"></i></span> حکومت قوروموا و یا سورگونده پارلمنت دئییل</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> رهبر سئچکیسی و یا شخصیت ویترینی دئییل</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> هئچ بیر تشکیلاتین و یا سیاسی جناحین مالی دئییل</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> دیگر تشبثلرین جایگزینی دئییل — هامیسینین تکمیلچیسیدیر</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> رژیم مودافعه‌چیلری اوچون فضا دئییل</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> مذاکره کلوبو دئییل — نتیجه و تعهد گؤزلنیر</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> حکومت قوروموا و یا سورگونده پارلمنت دئییل</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> رهبر سئچکیسی و یا شخصیت ویترینی دئییل</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> هئچ بیر تشکیلاتین و یا سیاسی جناحین مالی دئییل</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> دیگر تشبثلرین جایگزینی دئییل — هامیسینین تکمیلچیسیدیر</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> رژیم مودافعه‌چیلری اوچون فضا دئییل</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> مذاکره کلوبو دئییل — نتیجه و تعهد گؤزلنیر</li>
     </ul>
   </div>
 </section>
@@ -118,42 +121,42 @@
 
     <div class="card-grid">
       <div class="card">
-        <h3><i data-lucide="landmark"></i> دیپلوماتیک نومایندهلیک</h3>
+        <h3><i data-lucide="landmark" aria-hidden="true"></i> دیپلوماتیک نومایندهلیک</h3>
         <p>ایرانین دیپلوماتیک مسئلهلری اوچون دونیا سهنهسینده اعتبارلی و چوخگونلو نومایندهلیک قروپلاری.</p>
         <span class="tag">ایش قروپو ١ · WG1</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="bar-chart-3"></i> خالق ایشتیراکی آلتلری</h3>
+        <h3><i data-lucide="bar-chart-3" aria-hidden="true"></i> خالق ایشتیراکی آلتلری</h3>
         <p>گنیش وطنداش ایشتیراکی آلتلارینین سینانماسی و اوتورولماسی — ترازش، رفراندوم، سفربرلیک.</p>
         <span class="tag">ایش قروپو ٢ · WG2</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="wallet"></i> مالی ایشتیراک و دیفای</h3>
+        <h3><i data-lucide="wallet" aria-hidden="true"></i> مالی ایشتیراک و دیفای</h3>
         <p>گووەنلی و مرکزسیزلشدیریلمیش مالی مکانیزملر — سانکسیالارا اویغون، شفاف، ایشتیراکچی بودجهلمه.</p>
         <span class="tag">ایش قروپو ٣ · WG3</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="shield-check"></i> گووەنلی شبکه قوروجولوغو</h3>
+        <h3><i data-lucide="shield-check" aria-hidden="true"></i> گووەنلی شبکه قوروجولوغو</h3>
         <p>فعاللارین گووەنلی باغلانماسی، مخالفت شبکهسینین گنیشلندیریلمسی، عملیاتی تحلوکهسیزلیک تعلیمی و قایناقلار.</p>
         <span class="tag">ایش قروپو ٤ · WG4</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="lightbulb"></i> یئنیلیک و فکیرلر</h3>
+        <h3><i data-lucide="lightbulb" aria-hidden="true"></i> یئنیلیک و فکیرلر</h3>
         <p>هر کسدن، هر یئردن یئنی فکیرلری جلب ائتمک، دیرلندیرمک و تتبیق ائتمک اوچون آچیق خط.</p>
         <span class="tag">ایش قروپو ٥ · WG5</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="vote"></i> سیاسی ایشتیراک فضاسی</h3>
+        <h3><i data-lucide="vote" aria-hidden="true"></i> سیاسی ایشتیراک فضاسی</h3>
         <p>داوامیلی ایشتیراک پلتفورمونون طراحیسی — ایداره ساختاری، ایشتیراک دؤورلری، مسئولیت.</p>
         <span class="tag">ایش قروپو ٦ · WG6</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="scale"></i> واسطه‌چیلیک و منازعه حلّی</h3>
+        <h3><i data-lucide="scale" aria-hidden="true"></i> واسطه‌چیلیک و منازعه حلّی</h3>
         <p>ایرانین زدهلنمیش سیاسی فضاسی اوچون پئشهکار واسطه‌چیلیک — پروتوکوللار، تعلیم گؤرموش واسطه‌چیلر، اعتمادین برپاسی.</p>
         <span class="tag">ایش قروپو ٧ · WG7</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="monitor"></i> دیجیتال پروقرامـلار</h3>
+        <h3><i data-lucide="monitor" aria-hidden="true"></i> دیجیتال پروقرامـلار</h3>
         <p>دیجیتال حکومت، مدنی مودافعه و وطنداش تعلیمی — داووطلو کومانداایله ملموس پروقرامـلار.</p>
         <span class="tag">ایش قروپو ٨ · WG8</span>
       </div>
@@ -222,6 +225,7 @@
 
     <div class="table-wrap mt-3">
       <table>
+        <caption>حسابدهلیک مکانیزملری</caption>
         <thead>
           <tr>
             <th>مکانیزم</th>
@@ -250,23 +254,23 @@
 
     <div class="card-grid mt-2">
       <div class="card">
-        <h3><i data-lucide="circle-x"></i> مطلق قیرمیزی خطلر</h3>
+        <h3><i data-lucide="circle-x" aria-hidden="true"></i> مطلق قیرمیزی خطلر</h3>
         <ul class="redlines">
-          <li><span class="icon-no"><i data-lucide="x"></i></span> اسلام جمهوریتی رژیمینه حمایت</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> تئوکراتیک حکومته چاغیریش</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> فعاللارین کیملیکلرینین اوصاق سالینماسی</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> ائتنیک، دینی و یا جنسی قروپلارا قارشی نفرت نطقی</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> عذیت، تهدید، قورخوتمه</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> اسلام جمهوریتی رژیمینه حمایت</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> تئوکراتیک حکومته چاغیریش</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> فعاللارین کیملیکلرینین اوصاق سالینماسی</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> ائتنیک، دینی و یا جنسی قروپلارا قارشی نفرت نطقی</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> عذیت، تهدید، قورخوتمه</li>
         </ul>
       </div>
       <div class="card">
-        <h3><i data-lucide="circle-check"></i> آچیقجا خوش گلمیش</h3>
+        <h3><i data-lucide="circle-check" aria-hidden="true"></i> آچیقجا خوش گلمیش</h3>
         <ul class="redlines">
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> گلجک حکومت فورماسی حاقیندا مذاکره (جمهوریت، مونارخیا، فدرال)</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> خارجی مداخلهنین رولو حاقیندا فیکیر آیریلیغی</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> دیگر مخالفت ستراتئژیلرینین تنقیدی</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> ائتنیک و بؤلگەسل کیملیکین ایفادهسی</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> یوخاریداکی سرحدلر چرچیوەسینده رادیکال فکیرلرین تکلیفی</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> گلجک حکومت فورماسی حاقیندا مذاکره (جمهوریت، مونارخیا، فدرال)</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> خارجی مداخلهنین رولو حاقیندا فیکیر آیریلیغی</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> دیگر مخالفت ستراتئژیلرینین تنقیدی</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> ائتنیک و بؤلگەسل کیملیکین ایفادهسی</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> یوخاریداکی سرحدلر چرچیوەسینده رادیکال فکیرلرین تکلیفی</li>
         </ul>
       </div>
     </div>
@@ -298,8 +302,8 @@
     </div>
 
     <div class="cta-group mt-3">
-      <a href="https://github.com/tcfev/iran-digital-freedom-congress" class="btn btn-primary" target="_blank">گیتهاب ریپو</a>
-      <a href="https://x.com/armantorkzaban" class="btn btn-outline" target="_blank">X-ده ایزلهین</a>
+      <a href="https://github.com/tcfev/iran-digital-freedom-congress" class="btn btn-primary" target="_blank" rel="noopener noreferrer">گیتهاب ریپو</a>
+      <a href="https://x.com/armantorkzaban" class="btn btn-outline" target="_blank" rel="noopener noreferrer">X-ده ایزلهین</a>
     </div>
   </div>
 </section>
@@ -314,17 +318,17 @@
     <div class="card-grid">
       <div class="card">
         <h3>جمهور-آکادمیا کنسورسیومو</h3>
-        <p><a href="https://jomhoor.org/en" target="_blank">جمهور</a> مدنی تکنولوژی زیربناسینی تأمین ائدیر. <a href="https://iranacademia.com/?lang=en" target="_blank">ایران آکادمیا</a> آراشدیرمه، تعلیم و قورومسال قابیلیتی تأمین ائدیر. بیرلیکده: ستراتئژیک ستون.</p>
+        <p><a href="https://jomhoor.org/en" target="_blank" rel="noopener noreferrer">جمهور</a> مدنی تکنولوژی زیربناسینی تأمین ائدیر. <a href="https://iranacademia.com/?lang=en" target="_blank" rel="noopener noreferrer">ایران آکادمیا</a> آراشدیرمه، تعلیم و قورومسال قابیلیتی تأمین ائدیر. بیرلیکده: ستراتئژیک ستون.</p>
         <span class="tag">تکنولوژی + بیلیک</span>
       </div>
       <div class="card">
         <h3>اطلس ایران / TCF e.V.</h3>
-        <p><a href="https://atlasiran.github.io/Atlas-website/" target="_blank">اطلس ایران</a> مدنی جمعیت تشکیلاتلارینین خریطهسی. <a href="https://transcf.org" target="_blank">TCF e.V.</a> آلمان قانونو آلتیندا حقوقی ناظر.</p>
+        <p><a href="https://atlasiran.github.io/Atlas-website/" target="_blank" rel="noopener noreferrer">اطلس ایران</a> مدنی جمعیت تشکیلاتلارینین خریطهسی. <a href="https://transcf.org" target="_blank" rel="noopener noreferrer">TCF e.V.</a> آلمان قانونو آلتیندا حقوقی ناظر.</p>
         <span class="tag">خریطهلمه + حقوقی</span>
       </div>
       <div class="card">
         <h3>ایران آزادلیق کنقرەسی</h3>
-        <p><a href="https://www.ifcongress.org/" target="_blank">IFCongress</a> — لندن کنقرەسی ۳۰+ اوزولو هماهنگلیک شوراسی. سیاسی مشروعیت و مشاوره رولو.</p>
+        <p><a href="https://www.ifcongress.org/" target="_blank" rel="noopener noreferrer">IFCongress</a> — لندن کنقرەسی ۳۰+ اوزولو هماهنگلیک شوراسی. سیاسی مشروعیت و مشاوره رولو.</p>
         <span class="tag">سیاسی مشروعیت</span>
       </div>
     </div>
@@ -332,6 +336,7 @@
     <h3 class="mt-3">تکنولوژی یوغونو</h3>
     <div class="table-wrap">
       <table>
+        <caption>تکنولوژی ییغینی</caption>
         <thead>
           <tr><th>قات</th><th>آلت</th><th>مقصد</th></tr>
         </thead>
@@ -374,6 +379,12 @@
   </div>
 </section>
 
+</main>
+
+
+
+
+
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="container">
@@ -390,33 +401,33 @@
       <h4>قاتیلین</h4>
       <ul>
         <li><a href="#join">قاتیلین</a></li>
-        <li><a href="https://github.com/tcfev/iran-digital-freedom-congress" target="_blank">گیتهاب</a></li>
-        <li><a href="https://x.com/armantorkzaban" target="_blank">X / توییتر</a></li>
+        <li><a href="https://github.com/tcfev/iran-digital-freedom-congress" target="_blank" rel="noopener noreferrer">گیتهاب</a></li>
+        <li><a href="https://x.com/armantorkzaban" target="_blank" rel="noopener noreferrer">X / توییتر</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>ائکوسیستم</h4>
       <ul>
-        <li><a href="https://jomhoor.org/en" target="_blank">جمهور</a></li>
-        <li><a href="https://iranacademia.com/?lang=en" target="_blank">ایران آکادمیا</a></li>
-        <li><a href="https://atlasiran.github.io/Atlas-website/" target="_blank">اطلس ایران</a></li>
-        <li><a href="https://www.ifcongress.org/" target="_blank">IFCongress</a></li>
+        <li><a href="https://jomhoor.org/en" target="_blank" rel="noopener noreferrer">جمهور</a></li>
+        <li><a href="https://iranacademia.com/?lang=en" target="_blank" rel="noopener noreferrer">ایران آکادمیا</a></li>
+        <li><a href="https://atlasiran.github.io/Atlas-website/" target="_blank" rel="noopener noreferrer">اطلس ایران</a></li>
+        <li><a href="https://www.ifcongress.org/" target="_blank" rel="noopener noreferrer">IFCongress</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>دیللر</h4>
       <ul>
-        <li><a href="../en/">English</a></li>
-        <li><a href="../fa/">فارسی</a></li>
-        <li><a href="../ku/">کوردی</a></li>
-        <li><a href="../ar/">العربية</a></li>
-        <li><a href="../bal/">بلوچی</a></li>
-        <li><a href="../az/">تۆرکجه</a></li>
+        <li><a href="../en/" hreflang="en">English</a></li>
+        <li><a href="../fa/" hreflang="fa">فارسی</a></li>
+        <li><a href="../ku/" hreflang="ckb">کوردی</a></li>
+        <li><a href="../ar/" hreflang="ar">العربية</a></li>
+        <li><a href="../bal/" hreflang="bal">بلوچی</a></li>
+        <li><a href="../az/" hreflang="az">تۆرکجه</a></li>
       </ul>
     </div>
     <p class="copyright">
       © ٢٠٢٦ ایرانین آزادلیق دیجیتال کنقرەسی. آچیق قایناق. سانسورا قارشی مقاویم.<br>
-      ناظر: <a href="https://transcf.org" target="_blank">بئینلمیلل جمعیت فدراسیونو (TCF e.V.)</a>
+      ناظر: <a href="https://transcf.org" target="_blank" rel="noopener noreferrer">بئینلمیلل جمعیت فدراسیونو (TCF e.V.)</a>
     </p>
   </div>
 </footer>

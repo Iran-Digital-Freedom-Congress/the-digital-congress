@@ -10,13 +10,14 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body dir="rtl">
+<a href="#main-content" class="skip-link">محتوا ءَ بروئیت</a>
 
 <!-- ─── NAV ─── -->
-<nav>
+<nav aria-label="اصلی راهدربری">
   <div class="container">
     <a href="#home" class="logo"><span class="diamond">◆</span> آزاتیئے کانگرس</a>
-    <button class="nav-toggle" aria-label="مینو">☰</button>
-    <ul>
+    <button class="nav-toggle" aria-controls="nav-menu" aria-label="مینو">☰</button>
+    <ul id="nav-menu">
       <li><a href="#about">بارئیا</a></li>
       <li><a href="#working-groups">کارئے گروپ</a></li>
       <li><a href="#governance">سررشتگی</a></li>
@@ -25,17 +26,19 @@
       <li><a href="#partners">هماهنگ</a></li>
       <li>
         <div class="lang-switch">
-          <a href="../en/">EN</a>
-          <a href="../fa/">فا</a>
-          <a href="../ku/">کو</a>
-          <a href="../ar/">عر</a>
-          <a href="../bal/" class="active">بل</a>
-          <a href="../az/">تۆ</a>
+          <a href="../en/" hreflang="en">EN</a>
+          <a href="../fa/" hreflang="fa">فا</a>
+          <a href="../ku/" hreflang="ckb">کو</a>
+          <a href="../ar/" hreflang="ar">عر</a>
+          <a href="../bal/" hreflang="bal" class="active">بل</a>
+          <a href="../az/" hreflang="az">تۆ</a>
         </div>
       </li>
     </ul>
   </div>
 </nav>
+
+<main id="main-content">
 
 <!-- ─── HERO ─── -->
 <section class="hero" id="home">
@@ -89,22 +92,22 @@
 
     <h3 class="mt-3">ای کانگرس چے اِنت</h3>
     <ul class="redlines">
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> ڈیجیتالی جاگه سیاسی پدگیریئے ساریا و بهرور</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> ساریا هپتگئے آخری ریتم گوں مالوماتی دردانک</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> پاچ اِنت سرجمئے ایرانیاں که دژ اسلامی جمهوری رژیما اِنت</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> کسریی: سرجمئے قومان، زبانان، جنسان و سیاسی روشان مبارک اِنت</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> دموکراسیئے آزمایشگاه و شیوگ</li>
-      <li><span class="icon-yes"><i data-lucide="check"></i></span> شفاف: زندگین پخش، بلگنامه، آرشیو</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> ڈیجیتالی جاگه سیاسی پدگیریئے ساریا و بهرور</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> ساریا هپتگئے آخری ریتم گوں مالوماتی دردانک</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> پاچ اِنت سرجمئے ایرانیاں که دژ اسلامی جمهوری رژیما اِنت</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> کسریی: سرجمئے قومان، زبانان، جنسان و سیاسی روشان مبارک اِنت</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> دموکراسیئے آزمایشگاه و شیوگ</li>
+      <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> شفاف: زندگین پخش، بلگنامه، آرشیو</li>
     </ul>
 
     <h3 class="mt-3">ای کانگرس چے نیست</h3>
     <ul class="redlines">
-      <li><span class="icon-no"><i data-lucide="x"></i></span> حکومتی نهاد یا تبعیدئے پارلمان نیست</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> سرمستری هلبژاردنک یا شخصیتانئے ویترین نیست</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> هچ یک سازمان یا سیاسی جناهئے مالی نیست</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> دگه هلبندوکانی جاه‌نشین نیست — سرجمئے تکمیلکار اِنت</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> رژیمئے دفاعکارانئے جاگه نیست</li>
-      <li><span class="icon-no"><i data-lucide="x"></i></span> گپئے کلپ نیست — دردانک و پابندی چاردرکرنت</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> حکومتی نهاد یا تبعیدئے پارلمان نیست</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> سرمستری هلبژاردنک یا شخصیتانئے ویترین نیست</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> هچ یک سازمان یا سیاسی جناهئے مالی نیست</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> دگه هلبندوکانی جاه‌نشین نیست — سرجمئے تکمیلکار اِنت</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> رژیمئے دفاعکارانئے جاگه نیست</li>
+      <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> گپئے کلپ نیست — دردانک و پابندی چاردرکرنت</li>
     </ul>
   </div>
 </section>
@@ -118,42 +121,42 @@
 
     <div class="card-grid">
       <div class="card">
-        <h3><i data-lucide="landmark"></i> ڈیپلوماسی نمایندگی</h3>
+        <h3><i data-lucide="landmark" aria-hidden="true"></i> ڈیپلوماسی نمایندگی</h3>
         <p>باوری و کسریی نمایندگی گروپانئے جوڑ کنگ ایرانئے ڈیپلوماسی بابتان ساریا جهانی سهنا.</p>
         <span class="tag">کارگروپ ۱ · WG1</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="bar-chart-3"></i> مردمئے پدگیری آلات</h3>
+        <h3><i data-lucide="bar-chart-3" aria-hidden="true"></i> مردمئے پدگیری آلات</h3>
         <p>شهروندی پدگیریئے پراهین آلاتانئے آزمایش و بکارگری — ترازش، رأی‌پرسی، بسیج.</p>
         <span class="tag">کارگروپ ۲ · WG2</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="wallet"></i> مالی پدگیری و دیفای</h3>
+        <h3><i data-lucide="wallet" aria-hidden="true"></i> مالی پدگیری و دیفای</h3>
         <p>سلامت و ناتمرکزین مالی مکانیزمان — تحریمان هماهنگ، شفاف، پدگیری بوجه‌بندی.</p>
         <span class="tag">کارگروپ ۳ · WG3</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="shield-check"></i> سلامت تور‌جوڑی</h3>
+        <h3><i data-lucide="shield-check" aria-hidden="true"></i> سلامت تور‌جوڑی</h3>
         <p>چالاکوانانئے سلامت بستنه‌وه، اوپوزسیون تورئے پراه کنگ، عملیاتی سلامتی آموزش و سرچشمه.</p>
         <span class="tag">کارگروپ ۴ · WG4</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="lightbulb"></i> داهینانی و بیر</h3>
+        <h3><i data-lucide="lightbulb" aria-hidden="true"></i> داهینانی و بیر</h3>
         <p>پاچین هَد نوکین بیرانئے کشتنه، هلسنگاندن و بکارگری هرکسئے، هرجاگهئے.</p>
         <span class="tag">کارگروپ ۵ · WG5</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="vote"></i> سیاسی پدگیری جاگه</h3>
+        <h3><i data-lucide="vote" aria-hidden="true"></i> سیاسی پدگیری جاگه</h3>
         <p>ساریا پدگیری پلتفرمئے دیزاین — سررشتگیئے ساختمان، پدگیری خولان، جوابدهی.</p>
         <span class="tag">کارگروپ ۶ · WG6</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="scale"></i> ناهمری چارگری و نێوبژیوانی</h3>
+        <h3><i data-lucide="scale" aria-hidden="true"></i> ناهمری چارگری و نێوبژیوانی</h3>
         <p>ایرانئے زیانلکارین سیاسی جاگهئے ساریا پیشگین نێوبژیوانی — پروتوکلان، آموزشدیتگین نێوبژیوان، متمانه نوک کنگ.</p>
         <span class="tag">کارگروپ ۷ · WG7</span>
       </div>
       <div class="card">
-        <h3><i data-lucide="monitor"></i> ڈیجیتالی پروگرامان</h3>
+        <h3><i data-lucide="monitor" aria-hidden="true"></i> ڈیجیتالی پروگرامان</h3>
         <p>ڈیجیتالی حکومت، شهروندی دفاع و شهروندی آموزش — مالوماتی پروگرامان گوں داوطلب ٹیمان.</p>
         <span class="tag">کارگروپ ۸ · WG8</span>
       </div>
@@ -231,23 +234,23 @@
 
     <div class="card-grid mt-2">
       <div class="card">
-        <h3><i data-lucide="circle-x"></i> کُل سُهرئے هَد</h3>
+        <h3><i data-lucide="circle-x" aria-hidden="true"></i> کُل سُهرئے هَد</h3>
         <ul class="redlines">
-          <li><span class="icon-no"><i data-lucide="x"></i></span> اسلامی جمهوری رژیمئے پشتیوانی</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> دینی حکومتئے تبلیغ</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> چالاکوانانئے ناسنامهئے پادرمیان آرگ</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> قومی، دینی یا جنسی گروپانئے دیما نفرتئے گپ</li>
-          <li><span class="icon-no"><i data-lucide="x"></i></span> ایذا، ترساندنگ، زوراکی</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> اسلامی جمهوری رژیمئے پشتیوانی</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> دینی حکومتئے تبلیغ</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> چالاکوانانئے ناسنامهئے پادرمیان آرگ</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> قومی، دینی یا جنسی گروپانئے دیما نفرتئے گپ</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> ایذا، ترساندنگ، زوراکی</li>
         </ul>
       </div>
       <div class="card">
-        <h3><i data-lucide="circle-check"></i> ائشکرا مبارک اِنت</h3>
+        <h3><i data-lucide="circle-check" aria-hidden="true"></i> ائشکرا مبارک اِنت</h3>
         <ul class="redlines">
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> آتکین حکومتئے شکلئے بارا گپ (جمهوری، مشروطه، فدرال)</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> دراینی دخالتئے رولئے بارا ناهمری</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> دگه اوپوزسیون ستراتژیانئے انتقاد</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> قومی و ناحیگی ناسنامهئے بیان</li>
-          <li><span class="icon-yes"><i data-lucide="check"></i></span> سرئے سرحدانئے چوکاٹا بنیادینین بیران</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> آتکین حکومتئے شکلئے بارا گپ (جمهوری، مشروطه، فدرال)</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> دراینی دخالتئے رولئے بارا ناهمری</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> دگه اوپوزسیون ستراتژیانئے انتقاد</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> قومی و ناحیگی ناسنامهئے بیان</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> سرئے سرحدانئے چوکاٹا بنیادینین بیران</li>
         </ul>
       </div>
     </div>
@@ -278,8 +281,8 @@
     </div>
 
     <div class="cta-group mt-3">
-      <a href="https://github.com/tcfev/iran-digital-freedom-congress" class="btn btn-primary" target="_blank">گیتهاب ریپو</a>
-      <a href="https://x.com/armantorkzaban" class="btn btn-outline" target="_blank">X ا دنبال بکنیت</a>
+      <a href="https://github.com/tcfev/iran-digital-freedom-congress" class="btn btn-primary" target="_blank" rel="noopener noreferrer">گیتهاب ریپو</a>
+      <a href="https://x.com/armantorkzaban" class="btn btn-outline" target="_blank" rel="noopener noreferrer">X ا دنبال بکنیت</a>
     </div>
   </div>
 </section>
@@ -294,17 +297,17 @@
     <div class="card-grid">
       <div class="card">
         <h3>جمهور-آکادمیا کنسرسیوم</h3>
-        <p><a href="https://jomhoor.org/en" target="_blank">جمهور</a> شهروندی تکنالوژیئے زیربنا دنت. <a href="https://iranacademia.com/?lang=en" target="_blank">ایران آکادمیا</a> تحقیق، آموزش و نهادی توانا دنت. هماهنگا: ستراتژیک ستون.</p>
+        <p><a href="https://jomhoor.org/en" target="_blank" rel="noopener noreferrer">جمهور</a> شهروندی تکنالوژیئے زیربنا دنت. <a href="https://iranacademia.com/?lang=en" target="_blank" rel="noopener noreferrer">ایران آکادمیا</a> تحقیق، آموزش و نهادی توانا دنت. هماهنگا: ستراتژیک ستون.</p>
         <span class="tag">تکنالوژی + زانش</span>
       </div>
       <div class="card">
         <h3>اطلس ایران / TCF e.V.</h3>
-        <p><a href="https://atlasiran.github.io/Atlas-website/" target="_blank">اطلس ایران</a> شهروندی سازمانانئے نقشه. <a href="https://transcf.org" target="_blank">TCF e.V.</a> آلمانی قانونئے زیرا قانونی ناظر.</p>
+        <p><a href="https://atlasiran.github.io/Atlas-website/" target="_blank" rel="noopener noreferrer">اطلس ایران</a> شهروندی سازمانانئے نقشه. <a href="https://transcf.org" target="_blank" rel="noopener noreferrer">TCF e.V.</a> آلمانی قانونئے زیرا قانونی ناظر.</p>
         <span class="tag">نقشه‌کشی + قانونی</span>
       </div>
       <div class="card">
         <h3>ایرانئے آزاتی کانگرس</h3>
-        <p><a href="https://www.ifcongress.org/" target="_blank">IFCongress</a> — لندنئے کانگرس ۳۰+ اندامی هماهنگی شورا. سیاسی مشروعیت و راهنمایی رول.</p>
+        <p><a href="https://www.ifcongress.org/" target="_blank" rel="noopener noreferrer">IFCongress</a> — لندنئے کانگرس ۳۰+ اندامی هماهنگی شورا. سیاسی مشروعیت و راهنمایی رول.</p>
         <span class="tag">سیاسی مشروعیت</span>
       </div>
     </div>
@@ -312,6 +315,7 @@
     <h3 class="mt-3">تکنالوژی استک</h3>
     <div class="table-wrap">
       <table>
+        <caption>پاسخگویی ءِ ساختار</caption>
         <thead>
           <tr><th>لایه</th><th>آلات</th><th>مقصد</th></tr>
         </thead>
@@ -354,6 +358,12 @@
   </div>
 </section>
 
+</main>
+
+
+
+
+
 <!-- ─── FOOTER ─── -->
 <footer>
   <div class="container">
@@ -370,33 +380,33 @@
       <h4>پدگیری</h4>
       <ul>
         <li><a href="#join">گون بئیت</a></li>
-        <li><a href="https://github.com/tcfev/iran-digital-freedom-congress" target="_blank">گیتهاب</a></li>
-        <li><a href="https://x.com/armantorkzaban" target="_blank">X / تویتر</a></li>
+        <li><a href="https://github.com/tcfev/iran-digital-freedom-congress" target="_blank" rel="noopener noreferrer">گیتهاب</a></li>
+        <li><a href="https://x.com/armantorkzaban" target="_blank" rel="noopener noreferrer">X / تویتر</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>اکوسیستم</h4>
       <ul>
-        <li><a href="https://jomhoor.org/en" target="_blank">جمهور</a></li>
-        <li><a href="https://iranacademia.com/?lang=en" target="_blank">ایران آکادمیا</a></li>
-        <li><a href="https://atlasiran.github.io/Atlas-website/" target="_blank">اطلس ایران</a></li>
-        <li><a href="https://www.ifcongress.org/" target="_blank">IFCongress</a></li>
+        <li><a href="https://jomhoor.org/en" target="_blank" rel="noopener noreferrer">جمهور</a></li>
+        <li><a href="https://iranacademia.com/?lang=en" target="_blank" rel="noopener noreferrer">ایران آکادمیا</a></li>
+        <li><a href="https://atlasiran.github.io/Atlas-website/" target="_blank" rel="noopener noreferrer">اطلس ایران</a></li>
+        <li><a href="https://www.ifcongress.org/" target="_blank" rel="noopener noreferrer">IFCongress</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>زبانان</h4>
       <ul>
-        <li><a href="../en/">English</a></li>
-        <li><a href="../fa/">فارسی</a></li>
-        <li><a href="../ku/">کوردی</a></li>
-        <li><a href="../ar/">العربية</a></li>
-        <li><a href="../bal/">بلوچی</a></li>
-        <li><a href="../az/">تۆرکجه</a></li>
+        <li><a href="../en/" hreflang="en">English</a></li>
+        <li><a href="../fa/" hreflang="fa">فارسی</a></li>
+        <li><a href="../ku/" hreflang="ckb">کوردی</a></li>
+        <li><a href="../ar/" hreflang="ar">العربية</a></li>
+        <li><a href="../bal/" hreflang="bal">بلوچی</a></li>
+        <li><a href="../az/" hreflang="az">تۆرکجه</a></li>
       </ul>
     </div>
     <p class="copyright">
       © ۲۰۲۶ ایرانئے آزاتیئے ڈیجیٹالی کانگرس. پاچسرچشمه. سانسورئے دیما مقاوم.<br>
-      ناظر: <a href="https://transcf.org" target="_blank">فرامرزی کماش فدراسیون (TCF e.V.)</a>
+      ناظر: <a href="https://transcf.org" target="_blank" rel="noopener noreferrer">فرامرزی کماش فدراسیون (TCF e.V.)</a>
     </p>
   </div>
 </footer>
