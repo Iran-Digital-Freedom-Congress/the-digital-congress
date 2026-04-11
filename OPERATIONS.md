@@ -14,7 +14,7 @@ Anyone can join the Slack workspace and observe. The congress is **public by def
 |---|---|---|---|
 | **Observer (ناظر)** | Anyone interested | Read all public channels, watch livestreams | Self-join via invite link |
 | **Participant (مشارکت‌کننده)** | Iranians or allies who accept the charter | Write in public channels, join WG discussions, vote in Taraaz | Accept code of conduct on join |
-| **Verified Participant (مشارکت‌کننده‌ی تأییدشده)** | Iranians with ZKP identity verification | Vote in formal decisions, participate in sensitive WGs, eligible for facilitation roles | ZKP verification via INID SDK or ZK Passport |
+| **Verified Participant (مشارکت‌کننده‌ی تاییدشده)** | Iranians with ZKP identity verification | Vote in formal decisions, participate in sensitive WGs, eligible for facilitation roles | ZKP verification via INID SDK or ZK Passport |
 | **Facilitator (تسهیل‌گر)** | Elected/appointed WG leads | Moderate WG channels, set agendas, present at plenaries | Nominated + confirmed by WG members (4-week rotating terms) |
 | **Moderator (ناظم)** | Trained conflict resolution volunteers | Enforce code of conduct, mediate disputes, manage channel health | Apply + training + confirmed by Coordination Team |
 | **Coordinator (هماهنگ‌کننده)** | Core organizing team | Admin access, strategic decisions, cross-WG coordination | Founding team initially; elected after Month 3 |
