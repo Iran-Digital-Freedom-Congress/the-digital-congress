@@ -195,7 +195,7 @@
 │  │  Cannot: make policy, control budget, block votes  │  │
 │  └────────────────────────────────────────────────────┘  │
 │                                                          │
-│  Legal Custodian: TCF e.V. (or new entity)              │
+│  Legal Custodian: TCF e.V (or new entity)              │
 │  On-chain: DeXe DAO (when threshold reached)            │
 └──────────────────────────────────────────────────────────┘
 ```
@@ -249,7 +249,7 @@ The GA is every verified member — it's not a body you "join" like a parliament
   - **Role in DIFC**: Thought leaders and knowledge partners. Can design and run the educational/research dimensions of the congress — democratic literacy programs, policy research, drafting of foundational documents, facilitation methodology, learning reports. Their trans-partisan, non-ideological framing aligns perfectly with DIFC's pluralist principles.
   - **Status**: DIFC organizers are consortium members. Formal endorsement for DIFC as a consortium initiative pending — anticipated to be positive given alignment with consortium's stated mission of "restoring citizen agency" and "creating a platform for secure participation, dialogue, and collective decision-making."
   - **First consortium project**: [Progressive Iranians Party](https://iranacademia.com) — demonstrates the consortium model can support independent political initiatives, which validates DIFC's approach
-- **[Atlas Iran / TCF e.V.](https://atlasiran.github.io/Atlas-website/)** — Network mapping, legal custodian
+- **[Atlas Iran / TCF e.V](https://atlasiran.github.io/Atlas-website/)** — Network mapping, legal custodian
 - **[Iran Freedom Congress](https://www.ifcongress.org/)** — Political legitimacy, existing council members as advisors
 
 ### Tier 2: Participating Organizations (invited to working groups)
@@ -379,7 +379,7 @@ The GA is every verified member — it's not a body you "join" like a parliament
 
 ## 12. Open Questions for Discussion
 
-- [ ] Should DIFC be a new entity or a program under TCF e.V.?
+- [ ] Should DIFC be a new entity or a program under TCF e.V?
 - [ ] What's the relationship to IFCongress — complementary? Federated? Successor?
 - [ ] How to handle the inside/outside divide practically (not just technically)?
 - [ ] What languages are mandatory from day one vs. added later?
