@@ -6,14 +6,18 @@
   // ─── Counter ───
   function loadCount() {
     const el = document.getElementById('signup-count');
-    if (!el) return;
+    const heroEl = document.getElementById('hero-signup-count');
+    if (!el && !heroEl) return;
     fetch(API_BASE + '/api/count')
       .then(r => r.json())
       .then(data => {
-        el.textContent = (data.count || 0).toLocaleString();
+        const formatted = (data.count || 0).toLocaleString();
+        if (el) el.textContent = formatted;
+        if (heroEl) heroEl.textContent = formatted;
       })
       .catch(() => {
-        el.textContent = '—';
+        if (el) el.textContent = '—';
+        if (heroEl) heroEl.textContent = '—';
       });
   }
 
