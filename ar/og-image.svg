@@ -12,12 +12,22 @@
       <stop offset="43%" stop-color="#BAE6FD"/>
       <stop offset="92%" stop-color="#F5F7FA"/>
     </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur1"/>
+      <feColorMatrix in="blur1" type="matrix" values="1 0 0 0 0  0.64 0 0 0 0  0 0.04 0 0 0  0 0 0 0.5 0" result="glow1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="glow1"/>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
   </defs>
   <rect width="1200" height="630" fill="url(#bg-grad)"/>
   <circle cx="100" cy="530" r="180" fill="#3B82F6" opacity="0.05"/>
   <circle cx="1100" cy="100" r="200" fill="#0EA5E9" opacity="0.05"/>
   <rect x="0" y="0" width="1200" height="5" fill="url(#accent)"/>
-  <text x="600" y="195" text-anchor="middle" font-family="Inter, sans-serif" font-size="68" font-weight="800" fill="#F59E0B" style="filter:drop-shadow(0 0 6px #F59E0B) drop-shadow(0 0 14px rgba(245,158,11,0.5))">◆</text>
+  <text x="600" y="195" text-anchor="middle" font-family="Inter, sans-serif" font-size="68" font-weight="800" fill="#F59E0B" filter="url(#glow)">◆</text>
   <text x="600" y="290" text-anchor="middle" font-family="Vazirmatn, Inter, sans-serif" font-size="48" font-weight="700" fill="rgba(0,0,0,0.87)" direction="rtl">المؤتمر الرقمي لحرية إيران</text>
   <text x="600" y="370" text-anchor="middle" font-family="Vazirmatn, Inter, sans-serif" font-size="24" font-weight="400" fill="rgba(0,0,0,0.56)" direction="rtl">فضاء مشاركة سياسية مستمرة ورقمية للإيرانيين.</text>
   <text x="600" y="410" text-anchor="middle" font-family="Vazirmatn, Inter, sans-serif" font-size="24" font-weight="400" fill="rgba(0,0,0,0.56)" direction="rtl">كل نهاية أسبوع، بلا نهاية.</text>
