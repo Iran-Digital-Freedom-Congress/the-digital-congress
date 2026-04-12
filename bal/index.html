@@ -261,12 +261,26 @@
 </section>
 
 <!-- ─── JOIN ─── -->
-<section id="join">
+<section id="join" class="signup-section">
   <div class="container text-center">
     <p class="section-label">پدگیری بکنیت</p>
     <h2>کانگرسا گون بئیت</h2>
     <p style="max-width:640px;margin:0 auto 2rem;">
       بے فرمئے درخواست. بے دروازه‌بان. سلاکئے جاگها گون بئیت، رفتار منشورا قبول بکنیت و همی هپتگئے آخر پدگیری دست بئیت.</p>
+
+    <div class="signup-counter">
+      <i data-lucide="users" aria-hidden="true" style="width:18px;height:18px"></i>
+      <span id="signup-count">—</span> مردم گون بوتگ‌اَنت
+    </div>
+
+    <form id="signup-form" class="signup-form"
+      data-msg-success="ایمیلئے تصدیق شمئے ساریا رَوان بوت!"
+      data-msg-already="ای ایمیل پیش‌ترا ثبت بوتگ."
+      data-msg-error="اشکالے پیش آت. لطفاً دگه آزمایش بکنیت.">
+      <input type="email" placeholder="شمئے ایمیل" required autocomplete="email" aria-label="ایمیل">
+      <button type="submit">خوبخشی ثبت</button>
+    </form>
+    <p id="signup-message" class="signup-message" aria-live="polite"></p>
 
     <div class="card-grid">
       <div class="card">
@@ -408,6 +422,7 @@
 </footer>
 
 <script src="../js/main.js"></script>
+  <script src="../js/signup.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>lucide.createIcons();</script>
 </body>

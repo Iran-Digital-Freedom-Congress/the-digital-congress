@@ -283,13 +283,27 @@
 </section>
 
 <!-- ─── JOIN ─── -->
-<section id="join">
+<section id="join" class="signup-section">
   <div class="container text-center">
     <p class="section-label">مشارکت</p>
     <h2>به کنگره بپیوندید</h2>
     <p style="max-width:640px;margin:0 auto 2rem;">
       بدون فرم درخواست. بدون دربان. به فضای اسلک بپیوندید، منشور رفتاری را بپذیرید و همین آخر هفته شروع به مشارکت کنید.
     </p>
+
+    <div class="signup-counter">
+      <i data-lucide="users" aria-hidden="true" style="width:18px;height:18px"></i>
+      <span id="signup-count">—</span> نفر پیوسته‌اند
+    </div>
+
+    <form id="signup-form" class="signup-form"
+      data-msg-success="ایمیل تأیید برای شما ارسال شد!"
+      data-msg-already="این ایمیل قبلاً ثبت شده است."
+      data-msg-error="مشکلی پیش آمد. لطفاً دوباره تلاش کنید.">
+      <input type="email" placeholder="آدرس ایمیل شما" required autocomplete="email" aria-label="آدرس ایمیل">
+      <button type="submit">ثبت‌نام داوطلبانه</button>
+    </form>
+    <p id="signup-message" class="signup-message" aria-live="polite"></p>
 
     <div class="card-grid">
       <div class="card">
@@ -431,6 +445,7 @@
 </footer>
 
 <script src="../js/main.js"></script>
+  <script src="../js/signup.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>lucide.createIcons();</script>
 </body>

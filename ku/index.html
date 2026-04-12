@@ -282,13 +282,27 @@
 </section>
 
 <!-- ─── JOIN ─── -->
-<section id="join">
+<section id="join" class="signup-section">
   <div class="container text-center">
     <p class="section-label">بەشداریبکە</p>
     <h2>بەشداربە لە کۆنگرەدا</h2>
     <p style="max-width:640px;margin:0 auto 2rem;">
       بەبێ فۆڕمی داواکاری. بەبێ دەروازەبان. بەشداربە لە سلاک، ڕێنامەی ڕەفتار پەسەند بکە و هەمین کۆتایی هەفتە دەست بکە بە بەشداری.
     </p>
+
+    <div class="signup-counter">
+      <i data-lucide="users" aria-hidden="true" style="width:18px;height:18px"></i>
+      <span id="signup-count">—</span> کەس بەشداریان کردووە
+    </div>
+
+    <form id="signup-form" class="signup-form"
+      data-msg-success="ئیمەیڵی پشتڕاستکردنەوە بۆت نێردرا!"
+      data-msg-already="ئەم ئیمەیڵە پێشتر تۆمارکراوە."
+      data-msg-error="هەڵەیەک ڕوویدا. تکایە دووبارە هەوڵبدەوە.">
+      <input type="email" placeholder="ئیمەیڵەکەت" required autocomplete="email" aria-label="ئیمەیڵ">
+      <button type="submit">تۆمارکردنی خۆبەخش</button>
+    </form>
+    <p id="signup-message" class="signup-message" aria-live="polite"></p>
 
     <div class="card-grid">
       <div class="card">
@@ -430,6 +444,7 @@
 </footer>
 
 <script src="../js/main.js"></script>
+  <script src="../js/signup.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>lucide.createIcons();</script>
 </body>

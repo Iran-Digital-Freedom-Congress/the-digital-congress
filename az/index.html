@@ -282,13 +282,27 @@
 </section>
 
 <!-- ─── JOIN ─── -->
-<section id="join">
+<section id="join" class="signup-section">
   <div class="container text-center">
     <p class="section-label">قاتیلین</p>
     <h2>کنقرەیه قاتیلین</h2>
     <p style="max-width:640px;margin:0 auto 2rem;">
       عریضه فورمو یوخ. قاپیچی یوخ. سلاک فضاسینا قاتیلین، داورانیش مجلّهسینی قبول ائدین و بو هفته سونو ایشتیراکا باشلایین.
     </p>
+
+    <div class="signup-counter">
+      <i data-lucide="users" aria-hidden="true" style="width:18px;height:18px"></i>
+      <span id="signup-count">—</span> نفر قاتیلیب
+    </div>
+
+    <form id="signup-form" class="signup-form"
+      data-msg-success="تأیید ایمیلینیزی یوخلایین!"
+      data-msg-already="بو ایمیل آرتیق قئیدیّاتدان کئچیب."
+      data-msg-error="خطا باش وئردی. لطفاً یئنیدن جهد ائدین.">
+      <input type="email" placeholder="ایمیل آدرسینیز" required autocomplete="email" aria-label="ایمیل">
+      <button type="submit">کؤنوللو قئیدیّات</button>
+    </form>
+    <p id="signup-message" class="signup-message" aria-live="polite"></p>
 
     <div class="card-grid">
       <div class="card">
@@ -430,6 +444,7 @@
 </footer>
 
 <script src="../js/main.js"></script>
+  <script src="../js/signup.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>lucide.createIcons();</script>
 </body>
