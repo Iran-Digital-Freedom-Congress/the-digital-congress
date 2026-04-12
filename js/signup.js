@@ -11,7 +11,8 @@
     fetch(API_BASE + '/api/count')
       .then(r => r.json())
       .then(data => {
-        const formatted = (data.count || 0).toLocaleString();
+        const lang = document.documentElement.lang || 'en';
+        const formatted = (data.count || 0).toLocaleString(lang);
         if (el) el.textContent = formatted;
         if (heroEl) heroEl.textContent = formatted;
       })
