@@ -3,6 +3,15 @@
   // CONFIGURE: set this to your deployed Worker URL
   const API_BASE = 'https://congress-signup.difcongress.workers.dev';
 
+  // Map HTML lang attributes to locales that produce native digits
+  const NUM_LOCALE = {
+    'fa': 'fa',            // Persian digits ۰–۹
+    'ar': 'ar-u-nu-arab',  // Arabic-Indic digits ٠–٩
+    'ku': 'ckb',           // Central Kurdish (Sorani) digits ٠–٩
+    'bal': 'fa',           // Balochi — Persian-style digits ۰–۹
+    'az-Arab': 'fa',       // South Azerbaijani — Persian-style digits ۰–۹
+  };
+
   // ─── Counter ───
   function loadCount() {
     const el = document.getElementById('signup-count');
@@ -12,7 +21,8 @@
       .then(r => r.json())
       .then(data => {
         const lang = document.documentElement.lang || 'en';
-        const formatted = (data.count || 0).toLocaleString(lang);
+        const locale = NUM_LOCALE[lang] || lang;
+        const formatted = (data.count || 0).toLocaleString(locale);
         if (el) el.textContent = formatted;
         if (heroEl) heroEl.textContent = formatted;
       })
