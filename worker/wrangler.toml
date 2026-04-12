@@ -1,0 +1,12 @@
+name = "congress-signup"
+main = "src/index.js"
+compatibility_date = "2024-12-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "congress_signups"
+database_id = "bce29688-65bf-44c6-8db7-b20747c60dd3"
+
+[vars]
+FRONTEND_URL = "https://difcongress.com"
+FROM_EMAIL = "congress@difcongress.com"

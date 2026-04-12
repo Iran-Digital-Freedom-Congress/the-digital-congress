@@ -282,13 +282,27 @@
 </section>
 
 <!-- ─── JOIN ─── -->
-<section id="join">
+<section id="join" class="signup-section">
   <div class="container text-center">
     <p class="section-label">شارك</p>
     <h2>انضم إلى المؤتمر</h2>
     <p style="max-width:640px;margin:0 auto 2rem;">
       لا استمارة طلب. لا حراس بوابات. انضم لفضاء سلاك، اقبل مدونة السلوك، وابدأ المساهمة هذه نهاية الأسبوع.
     </p>
+
+    <div class="signup-counter">
+      <i data-lucide="users" aria-hidden="true" style="width:18px;height:18px"></i>
+      <span id="signup-count">—</span> شخص انضموا
+    </div>
+
+    <form id="signup-form" class="signup-form"
+      data-msg-success="تحقق من بريدك الإلكتروني للتأكيد!"
+      data-msg-already="هذا البريد الإلكتروني مسجل بالفعل."
+      data-msg-error="حدث خطأ. يرجى المحاولة مرة أخرى.">
+      <input type="email" placeholder="بريدك الإلكتروني" required autocomplete="email" aria-label="البريد الإلكتروني">
+      <button type="submit">سجّل كمتطوع</button>
+    </form>
+    <p id="signup-message" class="signup-message" aria-live="polite"></p>
 
     <div class="card-grid">
       <div class="card">
@@ -430,6 +444,7 @@
 </footer>
 
 <script src="../js/main.js"></script>
+  <script src="../js/signup.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>lucide.createIcons();</script>
 </body>
