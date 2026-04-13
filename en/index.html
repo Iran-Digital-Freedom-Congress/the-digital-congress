@@ -295,7 +295,7 @@
           <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> Support for the Islamic Republic regime</li>
           <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> Advocacy for theocratic governance</li>
           <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> Doxxing or exposing identities of activists</li>
-          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> Hate speech targeting ethnic, religious, or gender groups</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> Hate speech targeting ethnic and national, religious, or gender groups</li>
           <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> Harassment, threats, intimidation</li>
         </ul>
       </div>
@@ -305,7 +305,7 @@
           <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> Debating future government form (republic, monarchy, federation)</li>
           <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> Disagreeing about foreign intervention's role</li>
           <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> Criticizing other opposition strategies</li>
-          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> Expressing ethnic and regional identity</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> Expressing ethnic, national and regional identity</li>
           <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> Proposing radical ideas within the boundaries above</li>
         </ul>
       </div>
@@ -332,6 +332,7 @@
       data-msg-already="This email is already registered."
       data-msg-error="Something went wrong. Please try again.">
       <input type="email" placeholder="Your email address" required autocomplete="email" aria-label="Email address">
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAC88vBvbQgEGVz66" data-theme="light"></div>
       <button type="submit">Join as Volunteer</button>
     </form>
     <p id="signup-message" class="signup-message" aria-live="polite"></p>
@@ -476,6 +477,7 @@
 </footer>
 
 <script src="../js/main.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="../js/signup.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>lucide.createIcons();</script>

@@ -45,6 +45,10 @@
       const email = input.value.trim();
       if (!email) return;
 
+      // Get Turnstile token
+      const turnstileInput = form.querySelector('[name="cf-turnstile-response"]');
+      const turnstileToken = turnstileInput ? turnstileInput.value : '';
+
       btn.disabled = true;
       msg.textContent = '';
       msg.className = 'signup-message';
@@ -53,7 +57,7 @@
         const res = await fetch(API_BASE + '/api/signup', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email }),
+          body: JSON.stringify({ email, 'cf-turnstile-response': turnstileToken }),
         });
         const data = await res.json();
 
@@ -61,9 +65,6 @@
           msg.textContent = form.dataset.msgSuccess || 'Check your email to confirm!';
           msg.classList.add('success');
           input.value = '';
-        } else if (data.error === 'already_verified') {
-          msg.textContent = form.dataset.msgAlready || 'This email is already registered.';
-          msg.classList.add('success');
         } else {
           msg.textContent = data.message || form.dataset.msgError || 'Something went wrong. Please try again.';
           msg.classList.add('error');
@@ -73,6 +74,11 @@
         msg.classList.add('error');
       } finally {
         btn.disabled = false;
+        // Reset Turnstile widget for next attempt
+        if (window.turnstile) {
+          const widget = form.querySelector('.cf-turnstile');
+          if (widget) turnstile.reset(widget);
+        }
       }
     });
   }

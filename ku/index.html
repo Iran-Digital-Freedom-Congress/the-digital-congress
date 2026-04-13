@@ -288,7 +288,7 @@
           <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> پشتگیری لە ڕژێمی کۆماری ئیسلامی</li>
           <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> بانگەوازی حکومەتی ئایینی</li>
           <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> ئاشکراکردنی ناسنامەی چالاکوانان</li>
-          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> قسەی ڕقلێکردن دژی گرووپی نەتەوەیی، ئایینی یان ڕەگەزی</li>
+          <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> قسەی ڕقلێکردن دژی گرووپی ئیتنیکی و نەتەوەیی، ئایینی یان ڕەگەزی</li>
           <li><span class="icon-no"><i data-lucide="x" aria-hidden="true"></i></span> ئازار، هەڕەشە، تۆقاندن</li>
         </ul>
       </div>
@@ -298,7 +298,7 @@
           <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> گفتوگۆ لەسەر شێوەی حکوومەتی داهاتوو (کۆمار، مۆنارکی، فیدراڵ)</li>
           <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> ناکۆکبوون لەسەر ڕۆڵی دەستێوەردانی دەرەکی</li>
           <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> ڕەخنەلە ستراتیژی ئۆپۆزسیۆنی تر</li>
-          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> دەربڕینی ناسنامەی نەتەوەیی و ناوچەیی</li>
+          <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> دەربڕینی ناسنامەی ئیتنیکی، نەتەوەیی و ناوچەیی</li>
           <li><span class="icon-yes"><i data-lucide="check" aria-hidden="true"></i></span> پێشنیاری بیرۆکەی بنەڕەتی لە چوارچێوەی سنوورەکانی سەرەوە</li>
         </ul>
       </div>
@@ -325,6 +325,7 @@
       data-msg-already="ئەم ئیمەیڵە پێشتر تۆمارکراوە."
       data-msg-error="هەڵەیەک ڕوویدا. تکایە دووبارە هەوڵبدەوە.">
       <input type="email" placeholder="ئیمەیڵەکەت" required autocomplete="email" aria-label="ئیمەیڵ">
+      <div class="cf-turnstile" data-sitekey="0x4AAAAAAC88vBvbQgEGVz66" data-theme="light"></div>
       <button type="submit">تۆمارکردنی خۆبەخش</button>
     </form>
     <p id="signup-message" class="signup-message" aria-live="polite"></p>
@@ -469,6 +470,7 @@
 </footer>
 
 <script src="../js/main.js"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="../js/signup.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <script>lucide.createIcons();</script>
