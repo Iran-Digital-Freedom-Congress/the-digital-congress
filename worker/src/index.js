@@ -1,13 +1,45 @@
 // Congress Signup Worker — Cloudflare Workers + D1 + Resend
 
 const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Origin': 'https://difcongress.com',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
   'Access-Control-Allow-Headers': 'Content-Type',
 };
 
 // Simple email regex — not exhaustive, just a sanity check
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// Rate limit: max requests per IP per endpoint per time window
+const RATE_LIMIT_MAX = 5;           // max 5 signups
+const RATE_LIMIT_WINDOW_MINS = 60;  // per 60-minute window
+
+async function checkRateLimit(ip, endpoint, env) {
+  // Window key: rounded to the current hour-block
+  const now = new Date();
+  const window = new Date(now.getFullYear(), now.getMonth(), now.getDate(),
+    now.getHours(), Math.floor(now.getMinutes() / RATE_LIMIT_WINDOW_MINS) * RATE_LIMIT_WINDOW_MINS)
+    .toISOString();
+
+  const row = await env.DB.prepare(
+    'SELECT hits FROM rate_limits WHERE ip = ? AND endpoint = ? AND window = ?'
+  ).bind(ip, endpoint, window).first();
+
+  if (row && row.hits >= RATE_LIMIT_MAX) {
+    return false; // rate limited
+  }
+
+  // Upsert hit count
+  await env.DB.prepare(
+    `INSERT INTO rate_limits (ip, endpoint, window, hits) VALUES (?, ?, ?, 1)
+     ON CONFLICT(ip, endpoint, window) DO UPDATE SET hits = hits + 1`
+  ).bind(ip, endpoint, window).run();
+
+  // Lazy cleanup: delete old windows (older than 2 hours)
+  const cutoff = new Date(now.getTime() - 2 * 60 * 60 * 1000).toISOString();
+  await env.DB.prepare('DELETE FROM rate_limits WHERE window < ?').bind(cutoff).run();
+
+  return true; // allowed
+}
 
 export default {
   async fetch(request, env) {
@@ -38,6 +70,13 @@ export default {
 
 // ─── POST /api/signup ───
 async function handleSignup(request, env) {
+  // Rate limit by IP
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  const allowed = await checkRateLimit(ip, 'signup', env);
+  if (!allowed) {
+    return jsonResponse({ error: 'Too many requests. Please try again later.' }, 429);
+  }
+
   let body;
   try {
     body = await request.json();
@@ -50,14 +89,36 @@ async function handleSignup(request, env) {
     return jsonResponse({ error: 'Invalid email address' }, 400);
   }
 
-  // Check for existing signup
+  // Verify Turnstile CAPTCHA token
+  const turnstileToken = body['cf-turnstile-response'] || '';
+  if (env.TURNSTILE_SECRET_KEY) {
+    const tsRes = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        secret: env.TURNSTILE_SECRET_KEY,
+        response: turnstileToken,
+        remoteip: ip,
+      }),
+    });
+    const tsData = await tsRes.json();
+    if (!tsData.success) {
+      return jsonResponse({ error: 'CAPTCHA verification failed. Please try again.' }, 403);
+    }
+  }
+
+  // Unified response to prevent email enumeration —
+  // always return the same message regardless of email state.
+  const UNIFIED_MSG = 'If this email is not yet registered, you will receive a verification link shortly.';
+
   const existing = await env.DB.prepare(
     'SELECT id, verified FROM signups WHERE email = ?'
   ).bind(email).first();
 
   if (existing) {
     if (existing.verified) {
-      return jsonResponse({ error: 'already_verified', message: 'This email is already registered.' }, 409);
+      // Already verified — return same message, do nothing
+      return jsonResponse({ ok: true, message: UNIFIED_MSG });
     }
     // Resend verification for unverified emails
     const token = crypto.randomUUID();
@@ -65,7 +126,7 @@ async function handleSignup(request, env) {
       'UPDATE signups SET token = ?, created_at = datetime(\'now\') WHERE id = ?'
     ).bind(token, existing.id).run();
     await sendVerificationEmail(email, token, env);
-    return jsonResponse({ ok: true, message: 'Verification email resent.' });
+    return jsonResponse({ ok: true, message: UNIFIED_MSG });
   }
 
   // New signup
@@ -75,7 +136,7 @@ async function handleSignup(request, env) {
   ).bind(email, token).run();
 
   await sendVerificationEmail(email, token, env);
-  return jsonResponse({ ok: true, message: 'Check your email to confirm.' });
+  return jsonResponse({ ok: true, message: UNIFIED_MSG });
 }
 
 // ─── GET /api/verify?token=... ───
