@@ -82,6 +82,45 @@
   letter-spacing: 0;
 }
 
+/* ─── Translation Review Notice (inline, per-locale) ─── */
+.translation-notice {
+  background: #fff8e1;
+  color: #5c4500;
+  border-top: 1px solid #f1d98a;
+  border-bottom: 1px solid #f1d98a;
+  padding: 14px 0;
+  font-size: 0.92rem;
+  line-height: 1.65;
+  margin-top: 110px; /* clear fixed nav (60px) + planning-banner (~50px) */
+}
+
+.translation-notice .container {
+  display: block;
+}
+
+.translation-notice strong {
+  color: #3d2e00;
+}
+
+.translation-notice a {
+  color: #7a5a00;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.translation-notice a:hover {
+  text-decoration: none;
+}
+
+.translation-notice__en {
+  display: block;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px dashed #e4cc7a;
+  font-size: 0.85rem;
+  color: #6b5200;
+}
+
 /* ─── Skip link ─── */
 .skip-link {
   position: absolute;
