@@ -1,8 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap');
-      @import url('https://cdn.jsdelivr.net/gh/rastikerdar/parastoo-font@v2.0.1/dist/font-face.css');
+      @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800&amp;family=Noto+Sans+Arabic:wght@400;700&amp;display=swap');@import url('https://cdn.jsdelivr.net/gh/rastikerdar/parastoo-font@v2.0.1/dist/font-face.css');
     </style>
     <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#3B82F6"/>
@@ -29,11 +28,11 @@
   <circle cx="1100" cy="100" r="200" fill="#0EA5E9" opacity="0.05"/>
   <rect x="0" y="0" width="1200" height="5" fill="url(#accent)"/>
   <text x="600" y="195" text-anchor="middle" font-family="Inter, sans-serif" font-size="68" font-weight="800" fill="#F59E0B" filter="url(#glow)">◆</text>
-  <text x="600" y="290" text-anchor="middle" font-family="Parastoo, Vazirmatn, sans-serif" font-size="52" font-weight="700" fill="rgba(0,0,0,0.87)" direction="rtl">کنگره‌ی دیجیتال آزادی ایران</text>
-  <text x="600" y="370" text-anchor="middle" font-family="Parastoo, Vazirmatn, sans-serif" font-size="24" font-weight="400" fill="rgba(0,0,0,0.56)" direction="rtl">فضای مشارکت سیاسی پیوسته و دیجیتال برای ایرانیان.</text>
-  <text x="600" y="410" text-anchor="middle" font-family="Parastoo, Vazirmatn, sans-serif" font-size="24" font-weight="400" fill="rgba(0,0,0,0.56)" direction="rtl">هر آخر هفته، بدون پایان.</text>
+  <text x="600" y="290" text-anchor="middle" font-family="Parastoo, Vazirmatn, 'Noto Sans Arabic', sans-serif" font-size="52" font-weight="700" fill="rgba(0,0,0,0.87)" direction="rtl">کنگره‌ی دیجیتال آزادی ایران</text>
+  <text x="600" y="370" text-anchor="middle" font-family="Parastoo, Vazirmatn, 'Noto Sans Arabic', sans-serif" font-size="24" font-weight="400" fill="rgba(0,0,0,0.56)" direction="rtl">فضای مشارکت سیاسی پیوسته</text>
+  <text x="600" y="410" text-anchor="middle" font-family="Parastoo, Vazirmatn, 'Noto Sans Arabic', sans-serif" font-size="24" font-weight="400" fill="rgba(0,0,0,0.56)" direction="rtl">هر آخر هفته، بدون پایان</text>
   <rect x="480" y="440" width="240" height="2" rx="1" fill="url(#accent)" opacity="0.4"/>
-  <text x="600" y="490" text-anchor="middle" font-family="Parastoo, Vazirmatn, sans-serif" font-size="18" font-weight="600" fill="#3B82F6" direction="rtl">مرحله‌ی برنامه‌ریزی — در گفتگو شرکت کنید</text>
+  <text x="600" y="490" text-anchor="middle" font-family="Parastoo, Vazirmatn, 'Noto Sans Arabic', sans-serif" font-size="18" font-weight="600" fill="#3B82F6" direction="rtl">مرحله‌ی برنامه‌ریزی — در گفتگو شرکت کنید</text>
   <rect x="0" y="580" width="1200" height="50" fill="url(#accent)"/>
   <text x="600" y="613" text-anchor="middle" font-family="Inter, sans-serif" font-size="21" font-weight="600" fill="#ffffff" letter-spacing="2">difcongress.com</text>
 </svg>

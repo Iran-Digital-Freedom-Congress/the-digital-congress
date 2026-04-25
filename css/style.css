@@ -46,11 +46,11 @@
   --container-padding: 24px;
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-fa: 'Parastoo', 'Vazirmatn', 'Noto Naskh Arabic', 'Inter', sans-serif;
-  --font-ar: 'Noto Naskh Arabic', 'Vazirmatn', 'Inter', sans-serif;
-  --font-ku: 'Vazirmatn', 'Noto Naskh Arabic', 'Inter', sans-serif;
-  --font-bal: 'Noto Naskh Arabic', 'Vazirmatn', 'Inter', sans-serif;
-  --font-az: 'Vazirmatn', 'Noto Naskh Arabic', 'Inter', sans-serif;
+  --font-fa: 'Parastoo', 'Vazirmatn', 'Noto Sans Arabic', 'Noto Naskh Arabic', 'Inter', sans-serif;
+  --font-ar: 'Noto Naskh Arabic', 'Noto Sans Arabic', 'Vazirmatn', 'Inter', sans-serif;
+  --font-ku: 'Vazirmatn', 'Noto Sans Arabic', 'Noto Naskh Arabic', 'Inter', sans-serif;
+  --font-bal: 'Noto Sans Arabic', 'Noto Naskh Arabic', 'Vazirmatn', 'Inter', sans-serif;
+  --font-az: 'Vazirmatn', 'Noto Sans Arabic', 'Noto Naskh Arabic', 'Inter', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
