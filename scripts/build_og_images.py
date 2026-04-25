@@ -168,10 +168,10 @@ def get(rows: dict, key: str, loc: str) -> str:
 
 
 def render_svg(loc: str, cfg: dict, rows: dict) -> str:
-    title    = escape(get(rows, "page_title",   loc))
+    title = escape(get(rows, "page_title",   loc))
     tagline1 = escape(get(rows, "hero_label",   loc))
     tagline2 = escape(get(rows, "rhythm_label", loc))
-    cta      = escape(get(rows, "planning_phase_cta", loc))
+    cta = escape(get(rows, "planning_phase_cta", loc))
     dir_attr = f' direction="{cfg["dir"]}"' if cfg["dir"] == "rtl" else ""
     return SVG_TEMPLATE.format(
         imports=cfg["imports"],
