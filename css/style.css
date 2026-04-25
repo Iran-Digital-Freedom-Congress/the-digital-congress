@@ -46,8 +46,11 @@
   --container-padding: 24px;
 
   --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --font-fa: 'Parastoo', 'Vazirmatn', 'Inter', sans-serif;
-  --font-ku: 'Vazirmatn', 'Inter', sans-serif;
+  --font-fa: 'Parastoo', 'Vazirmatn', 'Noto Naskh Arabic', 'Inter', sans-serif;
+  --font-ar: 'Noto Naskh Arabic', 'Vazirmatn', 'Inter', sans-serif;
+  --font-ku: 'Vazirmatn', 'Noto Naskh Arabic', 'Inter', sans-serif;
+  --font-bal: 'Noto Naskh Arabic', 'Vazirmatn', 'Inter', sans-serif;
+  --font-az: 'Vazirmatn', 'Noto Naskh Arabic', 'Inter', sans-serif;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -164,21 +167,25 @@ body {
   overflow-x: hidden;
 }
 
-body[dir="rtl"] {
+/* Per-language font assignment — applies on the <body lang="..."> AND on inline
+   spans like <span lang="fa"> embedded in other locales. Specificity is
+   intentionally above body[dir="rtl"] so each Arabic-script locale gets a font
+   stack with appropriate glyph coverage (Vazirmatn lacks some Balochi marks;
+   Parastoo is Persian-only). */
+html[lang="fa"] body, [lang="fa"] {
   font-family: var(--font-fa);
 }
-
-/* Persian text inside LTR pages */
-[lang="fa"] {
-  font-family: var(--font-fa);
+html[lang="ar"] body, [lang="ar"] {
+  font-family: var(--font-ar);
 }
-
-/* Other Arabic-script languages inside LTR pages */
-[lang="ckb"],
-[lang="ar"],
-[lang="bal"],
-[lang="az"] {
+html[lang="ckb"] body, [lang="ckb"] {
   font-family: var(--font-ku);
+}
+html[lang="bal"] body, [lang="bal"] {
+  font-family: var(--font-bal);
+}
+html[lang="az"] body, [lang="az"] {
+  font-family: var(--font-az);
 }
 
 a {
