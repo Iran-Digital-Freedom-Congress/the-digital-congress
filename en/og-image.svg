@@ -28,11 +28,11 @@
   <circle cx="1100" cy="100" r="200" fill="#0EA5E9" opacity="0.05"/>
   <rect x="0" y="0" width="1200" height="5" fill="url(#accent)"/>
   <text x="600" y="195" text-anchor="middle" font-family="Inter, sans-serif" font-size="68" font-weight="800" fill="#F59E0B" filter="url(#glow)">◆</text>
-  <text x="600" y="290" text-anchor="middle" font-family="Inter, sans-serif" font-size="52" font-weight="800" fill="rgba(0,0,0,0.87)" letter-spacing="0.5">Digital Iran Freedom Congress</text>
-  <text x="600" y="380" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="400" fill="rgba(0,0,0,0.56)">A continuous, digital-first political engagement space for Iranians.</text>
-  <text x="600" y="420" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="400" fill="rgba(0,0,0,0.56)">Every weekend, without end.</text>
-  <rect x="480" y="450" width="240" height="2" rx="1" fill="url(#accent)" opacity="0.4"/>
-  <text x="600" y="490" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#3B82F6">Planning Phase — Join the Deliberation</text>
+  <text x="600" y="290" text-anchor="middle" font-family="Inter, sans-serif" font-size="52" font-weight="700" fill="rgba(0,0,0,0.87)">Digital Iran Freedom Congress</text>
+  <text x="600" y="370" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="400" fill="rgba(0,0,0,0.56)">A Continuous Political Engagement Space</text>
+  <text x="600" y="410" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" font-weight="400" fill="rgba(0,0,0,0.56)">Every Weekend, Without End</text>
+  <rect x="480" y="440" width="240" height="2" rx="1" fill="url(#accent)" opacity="0.4"/>
+  <text x="600" y="490" text-anchor="middle" font-family="Inter, sans-serif" font-size="18" font-weight="600" fill="#3B82F6">Planning Phase — Join the Conversation</text>
   <rect x="0" y="580" width="1200" height="50" fill="url(#accent)"/>
   <text x="600" y="613" text-anchor="middle" font-family="Inter, sans-serif" font-size="21" font-weight="600" fill="#ffffff" letter-spacing="2">difcongress.com</text>
 </svg>
