@@ -58,7 +58,7 @@ OG_LOCALE = {
 def load_csv() -> dict[str, dict[str, str]]:
     """Returns {key: {locale: value}}."""
     with CSV_PATH.open(encoding="utf-8") as f:
-        reader = csv.DictReader(f)
+        reader = csv.DictReader(f, delimiter=";")
         return {row["key"]: row for row in reader}
 
 
