@@ -127,6 +127,15 @@ def update_html_attrs(soup: BeautifulSoup, locale: str, conf: dict) -> None:
         html_tag["dir"] = conf["dir"]
 
 
+def strip_locale_specific_helpers(soup: BeautifulSoup, locale: str) -> None:
+    """Remove helper markup that is intended only for the English source page."""
+    if locale == "en":
+        return
+
+    for el in soup.select(".subtitle-fa"):
+        el.decompose()
+
+
 def update_lang_switcher(soup: BeautifulSoup, locale: str) -> None:
     """Mark the active locale in the .lang-switch list."""
     sw = soup.select_one(".lang-switch")
@@ -168,6 +177,7 @@ def conf_default(locale: str) -> str:
 def build_locale(template_html: str, locale: str, conf: dict, strings: dict) -> str:
     soup = BeautifulSoup(template_html, "html.parser")
     update_html_attrs(soup, locale, conf)
+    strip_locale_specific_helpers(soup, locale)
     apply_translations(soup, locale, strings)
     update_lang_switcher(soup, locale)
     update_meta_urls(soup, locale)

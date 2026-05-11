@@ -12,8 +12,8 @@
   }
 
   // Minimal RFC-4180-ish CSV parser. Handles quoted fields with embedded
-  // commas, quotes ("") and newlines.
-  function parseCSV(text) {
+  // delimiters, quotes ("") and newlines.
+  function parseCSV(text, delimiter) {
     var rows = [];
     var row = [];
     var field = '';
@@ -30,7 +30,7 @@
       } else {
         if (c === '"') {
           inQuotes = true;
-        } else if (c === ',') {
+        } else if (c === delimiter) {
           row.push(field); field = '';
         } else if (c === '\n' || c === '\r') {
           if (c === '\r' && text[i + 1] === '\n') i++;
@@ -109,7 +109,7 @@
         return r.text();
       })
       .then(function (text) {
-        var rows = parseCSV(text).filter(function (r) { return r.length > 1; });
+        var rows = parseCSV(text, ';').filter(function (r) { return r.length > 1; });
         if (!rows.length) return;
         var header = rows[0];
         var keyIdx = header.indexOf('key');
