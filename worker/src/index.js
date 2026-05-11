@@ -1,5 +1,5 @@
 // Congress Signup Worker — Cloudflare Workers + D1 + Resend
-import { verificationEmailHtml, contributorEmailHtml, organiserEmailHtml } from './emails.js';
+import { contributorEmailHtml, organiserEmailHtml, verificationEmailHtml } from './emails.js';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': 'https://difcongress.com',

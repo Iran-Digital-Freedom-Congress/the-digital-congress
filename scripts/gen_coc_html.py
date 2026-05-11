@@ -4,28 +4,41 @@ import sys
 with open('drafts/coc.md', encoding='utf-8') as f:
     md = f.read()
 
+
 def md_to_html(text):
     lines = text.split('\n')
     out = []
     in_ul = False
     for line in lines:
         if line.startswith('# '):
-            if in_ul: out.append('</ul>'); in_ul = False
+            if in_ul:
+                out.append('</ul>')
+                in_ul = False
             out.append(f'<h2>{line[2:].strip()}</h2>')
         elif line.startswith('## '):
-            if in_ul: out.append('</ul>'); in_ul = False
+            if in_ul:
+                out.append('</ul>')
+                in_ul = False
             out.append(f'<h3>{line[3:].strip()}</h3>')
         elif line.startswith('* '):
-            if not in_ul: out.append('<ul>'); in_ul = True
+            if not in_ul:
+                out.append('<ul>')
+                in_ul = True
             out.append(f'<li>{line[2:].strip().rstrip(chr(92))}</li>')
         elif line.strip() == '':
-            if in_ul: out.append('</ul>'); in_ul = False
+            if in_ul:
+                out.append('</ul>')
+                in_ul = False
         else:
-            if in_ul: out.append('</ul>'); in_ul = False
+            if in_ul:
+                out.append('</ul>')
+                in_ul = False
             if line.strip():
                 out.append(f'<p>{line.strip()}</p>')
-    if in_ul: out.append('</ul>')
+    if in_ul:
+        out.append('</ul>')
     return '\n'.join(out)
+
 
 body = md_to_html(md)
 
