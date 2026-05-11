@@ -769,6 +769,21 @@ footer .copyright {
   border-radius: 12px;
   overflow: hidden;
   background: var(--bg-card);
+  transition: border-color var(--transition), box-shadow var(--transition), background-color var(--transition);
+}
+.coc-wrapper--error {
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+  background: rgba(220, 38, 38, 0.03);
+}
+.coc-wrapper--error .coc-label,
+.coc-wrapper--error .coc-scroll-hint,
+.coc-wrapper--error .coc-accept {
+  color: var(--error);
+}
+.coc-wrapper--error .coc-frame {
+  border-top-color: rgba(220, 38, 38, 0.32);
+  border-bottom-color: rgba(220, 38, 38, 0.32);
 }
 .coc-label {
   font-size: 0.8125rem;

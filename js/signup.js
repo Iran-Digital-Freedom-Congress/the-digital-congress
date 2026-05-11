@@ -39,6 +39,7 @@
     const emailInput = form.querySelector('input[type="email"]');
     const submitBtn = form.querySelector('button[type="submit"]');
     const msg = document.getElementById('signup-message');
+    const cocWrapper = form.querySelector('.coc-wrapper');
     const cocFrame = document.getElementById('coc-frame');
     const cocHint = document.getElementById('coc-scroll-hint');
     const cocAcceptLabel = document.getElementById('coc-accept-label');
@@ -55,11 +56,17 @@
     if (cocAcceptLabel) cocAcceptLabel.hidden = true;
     if (cocHint) cocHint.hidden = false;
 
+    function setCocErrorState(isInvalid) {
+      if (!cocWrapper) return;
+      cocWrapper.classList.toggle('coc-wrapper--error', isInvalid);
+    }
+
     function updateSubmitState() {
-      submitBtn.disabled = !(cocAccepted && selectedRole);
+      submitBtn.disabled = !(selectedRole && emailInput.value.trim());
     }
 
     function onCocScrolledToBottom() {
+      setCocErrorState(false);
       if (cocHint) cocHint.hidden = true;
       if (cocAcceptLabel) cocAcceptLabel.hidden = false;
       if (cocCheckbox) cocCheckbox.disabled = false;
@@ -134,6 +141,7 @@
     if (cocCheckbox) {
       cocCheckbox.addEventListener('change', () => {
         cocAccepted = cocCheckbox.checked;
+        setCocErrorState(!cocAccepted);
         updateSubmitState();
       });
     }
@@ -147,15 +155,26 @@
       });
     });
 
+    if (emailInput) {
+      emailInput.addEventListener('input', updateSubmitState);
+    }
+
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
       const email = emailInput.value.trim();
-      if (!email || !selectedRole || !cocAccepted) return;
+      if (!email || !selectedRole || !cocAccepted) {
+        if (!cocAccepted) {
+          setCocErrorState(true);
+          if (cocWrapper) cocWrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
 
       const turnstileInput = form.querySelector('[name="cf-turnstile-response"]');
       const turnstileToken = turnstileInput ? turnstileInput.value : '';
 
       submitBtn.disabled = true;
+      setCocErrorState(false);
       msg.textContent = '';
       msg.className = 'signup-message';
 
