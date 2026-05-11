@@ -73,7 +73,7 @@
 </div>
 <div class="stats">
 <div class="stat">
-<div class="number" data-i18n="stat_num_working_groups">9</div>
+<div class="number" data-i18n="stat_num_working_groups">٩</div>
 <div class="label" data-i18n="stat_working_groups">مجموعات عمل</div>
 </div>
 <div class="stat">
@@ -85,7 +85,7 @@
 <div class="label" data-i18n="stat_weekends">نهايات الأسبوع</div>
 </div>
 <div class="stat">
-<div class="number" data-i18n="stat_num_venue_cost">0,00 €</div>
+<div class="number" data-i18n="stat_num_venue_cost">٠,٠٠ €</div>
 <div class="label" data-i18n="stat_venue_cost">تكلفة المكان</div>
 </div>
 <div class="stat">
@@ -304,24 +304,56 @@
 <i aria-hidden="true" data-lucide="users" style="width:18px;height:18px"></i>
 <span id="signup-count">—</span> <span data-i18n="signup_counter_suffix">شخص انضموا</span>
 </div>
-<form class="signup-form" data-msg-already="This email is already registered." data-msg-error="Something went wrong. Please try again." data-msg-success="Check your email to confirm!" id="signup-form">
-<input aria-label="Email address" autocomplete="email" placeholder="Your email address" required="" type="email"/>
+<form class="signup-form" data-msg-error="Something went wrong. Please try again." data-msg-success="Check your email to confirm!" id="signup-form">
+<!-- 1. Code of Conduct -->
+<div class="coc-wrapper">
+<p class="coc-label" data-i18n="coc_label">مدونة السلوك</p>
+<div aria-label="Code of Conduct" class="coc-frame" id="coc-frame" role="region" tabindex="0"></div>
+<p class="coc-scroll-hint" data-error="تعذر تحميل مدونة السلوك. يرجى تحديث الصفحة والمحاولة مرة أخرى." data-i18n="coc_scroll_hint" data-i18n-attr="data-error:coc_load_error" id="coc-scroll-hint">مرر للأسفل للقبول</p>
+<label class="coc-accept" hidden="" id="coc-accept-label">
+<input id="coc-checkbox" type="checkbox"/>
+<span data-i18n="coc_accept_label">لقد قرأت مدونة السلوك وأقبلها</span>
+</label>
+</div>
+<!-- 2. Role selector -->
+<div class="role-selector">
+<p class="role-selector__label" data-i18n="signup_role_label">الانضمام بوصفك:</p>
+<div class="role-options">
+<label class="role-option role-option--default">
+<input checked="" name="membership-type" type="radio" value="observer"/>
+<span class="role-option__name" data-i18n="role_observer">مراقب</span>
+<span class="role-option__badge" data-i18n="role_default">افتراضي</span>
+</label>
+<label class="role-option role-option--disabled">
+<input disabled="" name="membership-type" type="radio" value="contributor"/>
+<span class="role-option__name" data-i18n="role_contributor">مشارك</span>
+<span class="coming-soon" data-i18n="role_coming_soon">قريباً</span>
+</label>
+<label class="role-option role-option--disabled">
+<input disabled="" name="membership-type" type="radio" value="organiser"/>
+<span class="role-option__name" data-i18n="role_organiser">منظم</span>
+<span class="coming-soon" data-i18n="role_coming_soon">قريباً</span>
+</label>
+</div>
+</div>
+<!-- 4. Email + CAPTCHA + submit -->
+<input aria-label="عنوان البريد الإلكتروني" autocomplete="email" data-i18n-attr="aria-label:join_email_aria;placeholder:join_email_placeholder" placeholder="عنوان بريدك الإلكتروني" required="" type="email"/>
 <div class="cf-turnstile" data-sitekey="0x4AAAAAAC88vBvbQgEGVz66" data-theme="light"></div>
-<button data-i18n="x_join_as_volunteer" type="submit">سجّل كمتطوع</button>
+<button data-i18n="x_join_as_volunteer" disabled="" type="submit">سجّل كمتطوع</button>
 </form>
 <p aria-live="polite" class="signup-message" id="signup-message"></p>
 <div class="card-grid">
 <div class="card">
 <h3 data-i18n="tier_observer">مراقب</h3>
-<p data-i18n="x_read_all_public_channels_watch_livestreams_self_jo">اقرأ جميع القنوات العامة، شاهد البث المباشر. انضم ذاتياً عبر رابط الدعوة.</p>
+<p data-i18n="x_read_all_public_channels_watch_livestreams_self_jo">تابع التحديثات العامة، واقرأ القنوات المفتوحة، وشاهد البث المباشر.</p>
 </div>
 <div class="card">
 <h3 data-i18n="tier_participant">مشارك</h3>
-<p data-i18n="x_accept_code_of_conduct_write_in_channels_join_work">اقبل مدونة السلوك، اكتب في القنوات، انضم لمجموعات العمل، أرسل أفكاراً.</p>
+<p data-i18n="x_accept_code_of_conduct_write_in_channels_join_work">اقبل مدونة السلوك، وشارك بالأفكار والنقاش في القنوات، وانضم إلى مجموعات العمل. قريباً.</p>
 </div>
 <div class="card">
-<h3 data-i18n="tier_verified">مشارك مُتحقق منه</h3>
-<p data-i18n="x_zkp_identity_verification_vote_in_formal_decisions">تحقق هوية ZKP. التصويت في القرارات الرسمية. مؤهل لأدوار التيسير.</p>
+<h3 data-i18n="tier_verified">منظم</h3>
+<p data-i18n="x_zkp_identity_verification_vote_in_formal_decisions">تولَّ دوراً تنسيقياً أعمق بعد التحقق من الهوية واستكمال تهيئة المنظمين. قريباً.</p>
 </div>
 </div>
 <div class="cta-group mt-3">

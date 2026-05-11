@@ -304,24 +304,56 @@
 <i aria-hidden="true" data-lucide="users" style="width:18px;height:18px"></i>
 <span id="signup-count">—</span> <span data-i18n="signup_counter_suffix">people have joined</span>
 </div>
-<form class="signup-form" data-msg-already="This email is already registered." data-msg-error="Something went wrong. Please try again." data-msg-success="Check your email to confirm!" id="signup-form">
-<input aria-label="Email address" autocomplete="email" placeholder="Your email address" required="" type="email"/>
+<form class="signup-form" data-msg-error="Something went wrong. Please try again." data-msg-success="Check your email to confirm!" id="signup-form">
+<!-- 1. Code of Conduct -->
+<div class="coc-wrapper">
+<p class="coc-label" data-i18n="coc_label">Code of Conduct</p>
+<div aria-label="Code of Conduct" class="coc-frame" id="coc-frame" role="region" tabindex="0"></div>
+<p class="coc-scroll-hint" data-error="Unable to load the Code of Conduct. Please refresh and try again." data-i18n="coc_scroll_hint" data-i18n-attr="data-error:coc_load_error" id="coc-scroll-hint">Scroll to the bottom to accept</p>
+<label class="coc-accept" hidden="" id="coc-accept-label">
+<input id="coc-checkbox" type="checkbox"/>
+<span data-i18n="coc_accept_label">I have read and accept the Code of Conduct</span>
+</label>
+</div>
+<!-- 2. Role selector -->
+<div class="role-selector">
+<p class="role-selector__label" data-i18n="signup_role_label">Join as:</p>
+<div class="role-options">
+<label class="role-option role-option--default">
+<input checked="" name="membership-type" type="radio" value="observer"/>
+<span class="role-option__name" data-i18n="role_observer">Observer</span>
+<span class="role-option__badge" data-i18n="role_default">Default</span>
+</label>
+<label class="role-option role-option--disabled">
+<input disabled="" name="membership-type" type="radio" value="contributor"/>
+<span class="role-option__name" data-i18n="role_contributor">Contributor</span>
+<span class="coming-soon" data-i18n="role_coming_soon">Coming soon</span>
+</label>
+<label class="role-option role-option--disabled">
+<input disabled="" name="membership-type" type="radio" value="organiser"/>
+<span class="role-option__name" data-i18n="role_organiser">Organiser</span>
+<span class="coming-soon" data-i18n="role_coming_soon">Coming soon</span>
+</label>
+</div>
+</div>
+<!-- 4. Email + CAPTCHA + submit -->
+<input aria-label="Email address" autocomplete="email" data-i18n-attr="aria-label:join_email_aria;placeholder:join_email_placeholder" placeholder="Your email address" required="" type="email"/>
 <div class="cf-turnstile" data-sitekey="0x4AAAAAAC88vBvbQgEGVz66" data-theme="light"></div>
-<button data-i18n="x_join_as_volunteer" type="submit">Join as Volunteer</button>
+<button data-i18n="x_join_as_volunteer" disabled="" type="submit">Join as Volunteer</button>
 </form>
 <p aria-live="polite" class="signup-message" id="signup-message"></p>
 <div class="card-grid">
 <div class="card">
 <h3 data-i18n="tier_observer">Observer</h3>
-<p data-i18n="x_read_all_public_channels_watch_livestreams_self_jo">Read all public channels, watch livestreams. Self-join via invite link.</p>
+<p data-i18n="x_read_all_public_channels_watch_livestreams_self_jo">Follow public updates, read open channels, and watch livestreams.</p>
 </div>
 <div class="card">
-<h3 data-i18n="tier_participant">Participant</h3>
-<p data-i18n="x_accept_code_of_conduct_write_in_channels_join_work">Accept code of conduct, write in channels, join working groups, post ideas.</p>
+<h3 data-i18n="tier_participant">Contributor</h3>
+<p data-i18n="x_accept_code_of_conduct_write_in_channels_join_work">Accept the code of conduct, contribute ideas and discussion in channels, and join working groups. Coming soon.</p>
 </div>
 <div class="card">
-<h3 data-i18n="tier_verified">Verified Participant</h3>
-<p data-i18n="x_zkp_identity_verification_vote_in_formal_decisions">ZKP identity verification. Vote in formal decisions. Eligible for facilitation roles.</p>
+<h3 data-i18n="tier_verified">Organiser</h3>
+<p data-i18n="x_zkp_identity_verification_vote_in_formal_decisions">Take on a deeper coordinating role after identity verification and organiser onboarding. Coming soon.</p>
 </div>
 </div>
 <div class="cta-group mt-3">

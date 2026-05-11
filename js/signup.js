@@ -12,11 +12,11 @@
     'az-Arab': 'fa',       // South Azerbaijani — Persian-style digits ۰–۹
   };
 
-  // ─── Counter ───
   function loadCount() {
     const el = document.getElementById('signup-count');
     const heroEl = document.getElementById('hero-signup-count');
     if (!el && !heroEl) return;
+
     fetch(API_BASE + '/api/count')
       .then(r => r.json())
       .then(data => {
@@ -32,59 +32,179 @@
       });
   }
 
-  // ─── Signup Form ───
   function initForm() {
     const form = document.getElementById('signup-form');
     if (!form) return;
-    const input = form.querySelector('input[type="email"]');
-    const btn = form.querySelector('button');
+
+    const emailInput = form.querySelector('input[type="email"]');
+    const submitBtn = form.querySelector('button[type="submit"]');
     const msg = document.getElementById('signup-message');
+    const cocFrame = document.getElementById('coc-frame');
+    const cocHint = document.getElementById('coc-scroll-hint');
+    const cocAcceptLabel = document.getElementById('coc-accept-label');
+    const cocCheckbox = document.getElementById('coc-checkbox');
+    const roleInputs = form.querySelectorAll('input[name="membership-type"]');
+
+    let cocAccepted = false;
+    let selectedRole = form.querySelector('input[name="membership-type"]:checked')?.value || null;
+
+    if (cocCheckbox) {
+      cocCheckbox.checked = false;
+      cocCheckbox.disabled = true;
+    }
+    if (cocAcceptLabel) cocAcceptLabel.hidden = true;
+    if (cocHint) cocHint.hidden = false;
+
+    function updateSubmitState() {
+      submitBtn.disabled = !(cocAccepted && selectedRole);
+    }
+
+    function onCocScrolledToBottom() {
+      if (cocHint) cocHint.hidden = true;
+      if (cocAcceptLabel) cocAcceptLabel.hidden = false;
+      if (cocCheckbox) cocCheckbox.disabled = false;
+    }
+
+    function setupCocScroll() {
+      if (!cocFrame) return;
+
+      let unlocked = false;
+      let hasScrolledFromTop = false;
+
+      function unlock() {
+        if (unlocked) return;
+        unlocked = true;
+        onCocScrolledToBottom();
+      }
+
+      function resetToTop() {
+        cocFrame.scrollTop = 0;
+      }
+
+      function checkScrolled() {
+        const { scrollTop, scrollHeight, clientHeight } = cocFrame;
+
+        if (scrollTop > 12) {
+          hasScrolledFromTop = true;
+        }
+
+        if (hasScrolledFromTop && scrollTop + clientHeight >= scrollHeight - 40) {
+          cocFrame.removeEventListener('scroll', checkScrolled);
+          unlock();
+        }
+      }
+
+      fetch('/coc.html')
+        .then(r => {
+          if (!r.ok) throw new Error('CoC ' + r.status);
+          return r.text();
+        })
+        .then(html => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          cocFrame.innerHTML = doc.body.innerHTML;
+          cocFrame.style.height = '220px';
+          cocFrame.style.overflowY = 'scroll';
+
+          requestAnimationFrame(() => {
+            resetToTop();
+            requestAnimationFrame(() => {
+              resetToTop();
+              if (cocFrame.scrollHeight <= cocFrame.clientHeight + 4) {
+                unlock();
+                return;
+              }
+              cocFrame.addEventListener('scroll', checkScrolled, { passive: true });
+            });
+          });
+        })
+        .catch(() => {
+          if (cocHint && cocHint.dataset.error) {
+            cocHint.textContent = cocHint.dataset.error;
+          }
+          if (cocAcceptLabel) cocAcceptLabel.hidden = true;
+          if (cocCheckbox) {
+            cocCheckbox.checked = false;
+            cocCheckbox.disabled = true;
+          }
+          updateSubmitState();
+        });
+    }
+
+    if (cocCheckbox) {
+      cocCheckbox.addEventListener('change', () => {
+        cocAccepted = cocCheckbox.checked;
+        updateSubmitState();
+      });
+    }
+
+    roleInputs.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (radio.checked && !radio.disabled) {
+          selectedRole = radio.value;
+          updateSubmitState();
+        }
+      });
+    });
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const email = input.value.trim();
-      if (!email) return;
+      const email = emailInput.value.trim();
+      if (!email || !selectedRole || !cocAccepted) return;
 
-      // Get Turnstile token
       const turnstileInput = form.querySelector('[name="cf-turnstile-response"]');
       const turnstileToken = turnstileInput ? turnstileInput.value : '';
 
-      btn.disabled = true;
+      submitBtn.disabled = true;
       msg.textContent = '';
       msg.className = 'signup-message';
+
+      const body = {
+        email,
+        'cf-turnstile-response': turnstileToken,
+        membership_type: selectedRole,
+      };
 
       try {
         const res = await fetch(API_BASE + '/api/signup', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, 'cf-turnstile-response': turnstileToken }),
+          body: JSON.stringify(body),
         });
         const data = await res.json();
 
         if (res.ok) {
           msg.textContent = form.dataset.msgSuccess || 'Check your email to confirm!';
           msg.classList.add('success');
-          input.value = '';
+          emailInput.value = '';
         } else {
-          msg.textContent = data.message || form.dataset.msgError || 'Something went wrong. Please try again.';
+          msg.textContent = data.error || form.dataset.msgError || 'Something went wrong. Please try again.';
           msg.classList.add('error');
         }
       } catch {
         msg.textContent = form.dataset.msgError || 'Network error. Please try again.';
         msg.classList.add('error');
       } finally {
-        btn.disabled = false;
-        // Reset Turnstile widget for next attempt
+        updateSubmitState();
         if (window.turnstile) {
           const widget = form.querySelector('.cf-turnstile');
           if (widget) turnstile.reset(widget);
         }
       }
     });
+
+    setupCocScroll();
+    updateSubmitState();
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
+  function initSignup() {
     loadCount();
     initForm();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSignup, { once: true });
+  } else {
+    initSignup();
+  }
 })();

@@ -1,4 +1,5 @@
 // Congress Signup Worker — Cloudflare Workers + D1 + Resend
+import { verificationEmailHtml, contributorEmailHtml, organiserEmailHtml } from './emails.js';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': 'https://difcongress.com',
@@ -107,6 +108,19 @@ async function handleSignup(request, env) {
     }
   }
 
+  // Validate membership_type. Only observer is live right now; other roles remain disabled
+  // in the UI and must not be accepted through direct API calls either.
+  const VALID_TYPES = ['observer', 'contributor', 'organiser'];
+  const LIVE_TYPES = ['observer'];
+  const membershipType = VALID_TYPES.includes(body.membership_type) ? body.membership_type : 'observer';
+  if (!LIVE_TYPES.includes(membershipType)) {
+    return jsonResponse({ error: 'This participation type is not available yet.' }, 400);
+  }
+
+  // Sanitize optional name fields (organiser only)
+  const firstName = (body.first_name || '').trim().slice(0, 100);
+  const lastName  = (body.last_name  || '').trim().slice(0, 100);
+
   // Unified response to prevent email enumeration —
   // always return the same message regardless of email state.
   const UNIFIED_MSG = 'If this email is not yet registered, you will receive a verification link shortly.';
@@ -120,11 +134,12 @@ async function handleSignup(request, env) {
       // Already verified — return same message, do nothing
       return jsonResponse({ ok: true, message: UNIFIED_MSG });
     }
-    // Resend verification for unverified emails
+    // Resend verification for unverified emails — also update membership fields
     const token = crypto.randomUUID();
     await env.DB.prepare(
-      'UPDATE signups SET token = ?, created_at = datetime(\'now\') WHERE id = ?'
-    ).bind(token, existing.id).run();
+      `UPDATE signups SET token = ?, membership_type = ?, first_name = ?, last_name = ?,
+       created_at = datetime('now') WHERE id = ?`
+    ).bind(token, membershipType, firstName || null, lastName || null, existing.id).run();
     await sendVerificationEmail(email, token, env);
     return jsonResponse({ ok: true, message: UNIFIED_MSG });
   }
@@ -132,8 +147,9 @@ async function handleSignup(request, env) {
   // New signup
   const token = crypto.randomUUID();
   await env.DB.prepare(
-    'INSERT INTO signups (email, token) VALUES (?, ?)'
-  ).bind(email, token).run();
+    `INSERT INTO signups (email, token, membership_type, first_name, last_name)
+     VALUES (?, ?, ?, ?, ?)`
+  ).bind(email, token, membershipType, firstName || null, lastName || null).run();
 
   await sendVerificationEmail(email, token, env);
   return jsonResponse({ ok: true, message: UNIFIED_MSG });
@@ -147,7 +163,7 @@ async function handleVerify(url, env) {
   }
 
   const row = await env.DB.prepare(
-    'SELECT id, verified FROM signups WHERE token = ?'
+    'SELECT id, email, verified, membership_type FROM signups WHERE token = ?'
   ).bind(token).first();
 
   if (!row) {
@@ -162,6 +178,16 @@ async function handleVerify(url, env) {
     "UPDATE signups SET verified = 1, verified_at = datetime('now') WHERE id = ?"
   ).bind(row.id).run();
 
+  // Send role-specific second email (contributor / organiser only)
+  if (row.membership_type === 'contributor' || row.membership_type === 'organiser') {
+    try {
+      await sendRoleEmail(row.email, row.membership_type, token, env);
+    } catch (err) {
+      // Log but don't fail the verification — user is already verified
+      console.error('Role email failed:', err);
+    }
+  }
+
   const frontendUrl = env.FRONTEND_URL || 'https://difcongress.com';
   return htmlResponse(successPage(false, frontendUrl));
 }
@@ -174,63 +200,62 @@ async function handleCount(env) {
   return jsonResponse({ count: result?.count || 0 });
 }
 
-// ─── Email via Resend ───
-async function sendVerificationEmail(email, token, env) {
-  const verifyUrl = `${env.FRONTEND_URL ? env.FRONTEND_URL.replace(/\/$/, '') : 'https://difcongress.com'}/api/verify?token=${token}`;
-  // If the worker is on a different domain, use the worker URL for verification
-  const workerVerifyUrl = `https://congress-signup.${env.CF_ACCOUNT_SUBDOMAIN || 'workers'}.workers.dev/api/verify?token=${token}`;
-  // Use WORKER_URL if set, otherwise construct from request
-  const finalVerifyUrl = env.WORKER_URL
-    ? `${env.WORKER_URL}/api/verify?token=${token}`
-    : workerVerifyUrl;
+// ─── Build worker verify URL ───
+function workerVerifyUrl(token, env) {
+  if (env.WORKER_URL) return `${env.WORKER_URL}/api/verify?token=${token}`;
+  return `https://congress-signup.${env.CF_ACCOUNT_SUBDOMAIN || 'workers'}.workers.dev/api/verify?token=${token}`;
+}
 
+// ─── Send step-1 verification email (same for all roles) ───
+async function sendVerificationEmail(email, token, env) {
+  const verifyUrl = workerVerifyUrl(token, env);
+  await resendSend({
+    from: env.FROM_EMAIL || 'hi@difcongress.com',
+    to: email,
+    subject: 'Confirm your participation — Digital Iran Freedom Congress / تأیید مشارکت شما',
+    html: verificationEmailHtml(verifyUrl),
+    env,
+  });
+}
+
+// ─── Send step-2 role-specific email (after verification) ───
+async function sendRoleEmail(email, membershipType, token, env) {
+  const zkpUrl = `https://app.jomhoor.org/zkp?token=${encodeURIComponent(email)}+${token}`;
+  const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(zkpUrl)}`;
+
+  const subjects = {
+    contributor: 'مرحله بعدی: تایید هویت ZKP — کنگره‌ی دیجیتال آزادی ایران',
+    organiser:   'مرحله بعدی: تایید هویت ZKP و KYC — کنگره‌ی دیجیتال آزادی ایران',
+  };
+  const htmlFns = {
+    contributor: () => contributorEmailHtml(zkpUrl, qrImageUrl),
+    organiser:   () => organiserEmailHtml(zkpUrl, qrImageUrl),
+  };
+
+  await resendSend({
+    from: env.FROM_EMAIL || 'hi@difcongress.com',
+    to: email,
+    subject: subjects[membershipType],
+    html: htmlFns[membershipType](),
+    env,
+  });
+}
+
+// ─── Resend API helper ───
+async function resendSend({ from, to, subject, html, env }) {
   const res = await fetch('https://api.resend.com/emails', {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${env.RESEND_API_KEY}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      from: env.FROM_EMAIL || 'congress@difcongress.com',
-      to: [email],
-      subject: 'Confirm your participation — Digital Iran Freedom Congress',
-      html: verificationEmailHtml(finalVerifyUrl),
-    }),
+    body: JSON.stringify({ from, to: [to], subject, html }),
   });
-
   if (!res.ok) {
     const err = await res.text();
     console.error('Resend error:', err);
-    throw new Error('Failed to send verification email');
+    throw new Error('Failed to send email');
   }
-}
-
-// ─── Email HTML ───
-function verificationEmailHtml(verifyUrl) {
-  return `<!DOCTYPE html>
-<html>
-<head><meta charset="UTF-8"></head>
-<body style="font-family:'Inter',sans-serif;background:#F5F7FA;padding:40px 20px;margin:0;">
-  <div style="max-width:480px;margin:0 auto;background:#fff;border-radius:12px;padding:40px;box-shadow:0 2px 8px rgba(0,0,0,0.06);">
-    <h1 style="font-size:20px;color:#1a1a2e;margin:0 0 16px;">◆ Digital Iran Freedom Congress</h1>
-    <p style="color:#334155;font-size:15px;line-height:1.6;">
-      Thank you for your interest in the congress. Please click the button below to confirm your email and be listed as a volunteer / future participant.
-    </p>
-    <p style="color:#334155;font-size:15px;line-height:1.6;" dir="rtl">
-      ممنون از علاقه‌مندی شما. لطفاً روی دکمه زیر کلیک کنید تا ایمیل شما تأیید شود و به عنوان داوطلب / شرکت‌کننده آینده ثبت شوید.
-    </p>
-    <div style="text-align:center;margin:32px 0;">
-      <a href="${verifyUrl}" style="display:inline-block;padding:14px 32px;background:linear-gradient(87.63deg,#3B82F6 -1.41%,#0EA5E9 113.73%);color:#fff;text-decoration:none;border-radius:8px;font-weight:600;font-size:15px;">
-        Confirm my participation / تأیید مشارکت من
-      </a>
-    </div>
-    <p style="color:#94a3b8;font-size:13px;line-height:1.5;">
-      If you didn't request this, you can safely ignore this email.<br>
-      اگر شما این درخواست را ارسال نکردید، این ایمیل را نادیده بگیرید.
-    </p>
-  </div>
-</body>
-</html>`;
 }
 
 // ─── Verify success page ───
@@ -238,10 +263,10 @@ function successPage(alreadyVerified, frontendUrl = 'https://difcongress.com') {
   const title = alreadyVerified ? 'Already Verified' : 'Welcome!';
   const msg = alreadyVerified
     ? 'Your email was already confirmed. You\'re on the list!'
-    : 'Your email is confirmed. You are now listed as a volunteer / future participant of the Digital Iran Freedom Congress.';
+    : 'Your email is confirmed. Your sign-up for the Digital Iran Freedom Congress is complete.';
   const msgFa = alreadyVerified
     ? 'ایمیل شما قبلاً تأیید شده بود. شما در لیست هستید!'
-    : 'ایمیل شما تأیید شد. شما اکنون به عنوان داوطلب / شرکت‌کننده آینده کنگره دیجیتال آزادی ایران ثبت شدید.';
+    : 'ایمیل شما تأیید شد. ثبت‌نام شما در کنگره دیجیتال آزادی ایران کامل شد.';
 
   return `<!DOCTYPE html>
 <html lang="en">

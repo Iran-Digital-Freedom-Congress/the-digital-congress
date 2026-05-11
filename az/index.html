@@ -73,7 +73,7 @@
 </div>
 <div class="stats">
 <div class="stat">
-<div class="number" data-i18n="stat_num_working_groups">9</div>
+<div class="number" data-i18n="stat_num_working_groups">۹</div>
 <div class="label" data-i18n="stat_working_groups">ایشچی قروپ</div>
 </div>
 <div class="stat">
@@ -85,7 +85,7 @@
 <div class="label" data-i18n="stat_weekends">هفته‌سونلاری</div>
 </div>
 <div class="stat">
-<div class="number" data-i18n="stat_num_venue_cost">0,00 €</div>
+<div class="number" data-i18n="stat_num_venue_cost">۰,۰۰ €</div>
 <div class="label" data-i18n="stat_venue_cost">مکان خرجی</div>
 </div>
 <div class="stat">
@@ -304,24 +304,56 @@
 <i aria-hidden="true" data-lucide="users" style="width:18px;height:18px"></i>
 <span id="signup-count">—</span> <span data-i18n="signup_counter_suffix">نفر قوشولوب</span>
 </div>
-<form class="signup-form" data-msg-already="This email is already registered." data-msg-error="Something went wrong. Please try again." data-msg-success="Check your email to confirm!" id="signup-form">
-<input aria-label="Email address" autocomplete="email" placeholder="Your email address" required="" type="email"/>
+<form class="signup-form" data-msg-error="Something went wrong. Please try again." data-msg-success="Check your email to confirm!" id="signup-form">
+<!-- 1. Code of Conduct -->
+<div class="coc-wrapper">
+<p class="coc-label" data-i18n="coc_label">Davranış Kuralları</p>
+<div aria-label="Code of Conduct" class="coc-frame" id="coc-frame" role="region" tabindex="0"></div>
+<p class="coc-scroll-hint" data-error="Davranış Kuralları yüklenemedi. Lütfen sayfayı yenileyip tekrar deneyin." data-i18n="coc_scroll_hint" data-i18n-attr="data-error:coc_load_error" id="coc-scroll-hint">Kabul etmek için aşağı kaydırın</p>
+<label class="coc-accept" hidden="" id="coc-accept-label">
+<input id="coc-checkbox" type="checkbox"/>
+<span data-i18n="coc_accept_label">Davranış Kurallarını okudum ve kabul ediyorum</span>
+</label>
+</div>
+<!-- 2. Role selector -->
+<div class="role-selector">
+<p class="role-selector__label" data-i18n="signup_role_label">Şu sıfatla katılın:</p>
+<div class="role-options">
+<label class="role-option role-option--default">
+<input checked="" name="membership-type" type="radio" value="observer"/>
+<span class="role-option__name" data-i18n="role_observer">Gözlemci</span>
+<span class="role-option__badge" data-i18n="role_default">Varsayılan</span>
+</label>
+<label class="role-option role-option--disabled">
+<input disabled="" name="membership-type" type="radio" value="contributor"/>
+<span class="role-option__name" data-i18n="role_contributor">Katılımcı</span>
+<span class="coming-soon" data-i18n="role_coming_soon">Yakında</span>
+</label>
+<label class="role-option role-option--disabled">
+<input disabled="" name="membership-type" type="radio" value="organiser"/>
+<span class="role-option__name" data-i18n="role_organiser">Organizatör</span>
+<span class="coming-soon" data-i18n="role_coming_soon">Yakında</span>
+</label>
+</div>
+</div>
+<!-- 4. Email + CAPTCHA + submit -->
+<input aria-label="E-posta adresi" autocomplete="email" data-i18n-attr="aria-label:join_email_aria;placeholder:join_email_placeholder" placeholder="E-posta adresiniz" required="" type="email"/>
 <div class="cf-turnstile" data-sitekey="0x4AAAAAAC88vBvbQgEGVz66" data-theme="light"></div>
-<button data-i18n="x_join_as_volunteer" type="submit">کؤنوللو اولاراق قوشولون</button>
+<button data-i18n="x_join_as_volunteer" disabled="" type="submit">کؤنوللو اولاراق قوشولون</button>
 </form>
 <p aria-live="polite" class="signup-message" id="signup-message"></p>
 <div class="card-grid">
 <div class="card">
-<h3 data-i18n="tier_observer">موشاهیده‌چی</h3>
-<p data-i18n="x_read_all_public_channels_watch_livestreams_self_jo">بوتون آچیق کاناللاری اوخویون، جانلی یایینلاری ایزله‌یین. دعوت لینکی واسیطه‌سیله قوشولون.</p>
+<h3 data-i18n="tier_observer">Gözlemci</h3>
+<p data-i18n="x_read_all_public_channels_watch_livestreams_self_jo">آچیق یئنیلملری ایزله‌یین، آچیق کاناللاری اوخویون و جانلی یایینلاری ایزله‌یین.</p>
 </div>
 <div class="card">
-<h3 data-i18n="tier_participant">ایشتیراکچی</h3>
-<p data-i18n="x_accept_code_of_conduct_write_in_channels_join_work">داورانیش قایدالارینی قبول ائدین، کاناللاردا یازین، ایشچی قروپلارا قوشولون، فیکیرلر پایلاشین.</p>
+<h3 data-i18n="tier_participant">Katılımcı</h3>
+<p data-i18n="x_accept_code_of_conduct_write_in_channels_join_work">داورانیش قایدالارینی قبول ائدین، کاناللاردا فیکیر و باحثلره قاتیلین و ایشچی قروپلارا قوشولون. Yakında.</p>
 </div>
 <div class="card">
-<h3 data-i18n="tier_verified">تصدیقلنمیش ایشتیراکچی</h3>
-<p data-i18n="x_zkp_identity_verification_vote_in_formal_decisions">ZKP کیملیک تصدیقی. رسمی قرارلاردا سس وئرین. فاسیلیتاتور روللاری اوچون اویغون.</p>
+<h3 data-i18n="tier_verified">Organizatör</h3>
+<p data-i18n="x_zkp_identity_verification_vote_in_formal_decisions">کیملیک تصدیقی و سازمان‌ده‌نلر اوچون اونبوردینگدن سونرا داها درین بیر هماهنگلشدیریجی رول آلان. Yakında.</p>
 </div>
 </div>
 <div class="cta-group mt-3">
