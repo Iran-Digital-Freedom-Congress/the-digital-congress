@@ -7,9 +7,11 @@
   const NUM_LOCALE = {
     'fa': 'fa',            // Persian digits ۰–۹
     'ar': 'ar-u-nu-arab',  // Arabic-Indic digits ٠–٩
-    'ku': 'ckb',           // Central Kurdish (Sorani) digits ٠–٩
+    'ku': 'ar-u-nu-arab',  // Legacy alias for Central Kurdish (Sorani)
+    'ckb': 'ar-u-nu-arab', // Central Kurdish (Sorani) digits ٠–٩
     'bal': 'fa',           // Balochi — Persian-style digits ۰–۹
-    'az-Arab': 'fa',       // South Azerbaijani — Persian-style digits ۰–۹
+    'az': 'fa',            // South Azerbaijani — Persian-style digits ۰–۹
+    'az-Arab': 'fa',       // Legacy alias for South Azerbaijani
   };
 
   function loadCount() {
