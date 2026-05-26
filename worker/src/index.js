@@ -219,9 +219,37 @@ async function handleVerify(url, env) {
 
 // ─── GET /api/count ───
 async function handleCount(env) {
-  const result = await env.DB.prepare(
-    'SELECT COUNT(*) as count FROM signups WHERE verified = 1'
-  ).first();
+  // Unified participant count:
+  // 1) verified email-first signups
+  // 2) completed wallet-first registrations (registered_at is set)
+  //
+  // We deduplicate where possible:
+  // - by email when present (same person may verify wallet and add email)
+  // - by sso_subject for wallet records without email
+  //
+  // If a wallet registration has neither email nor sso_subject (should be rare),
+  // token is used as a fallback unique key.
+  const result = await env.DB.prepare(`
+    WITH participant_keys AS (
+      SELECT DISTINCT 'email:' || lower(email) AS k
+      FROM signups
+      WHERE verified = 1
+
+      UNION
+
+      SELECT DISTINCT
+        CASE
+          WHEN email IS NOT NULL AND trim(email) != ''
+            THEN 'email:' || lower(trim(email))
+          WHEN sso_subject IS NOT NULL AND trim(sso_subject) != ''
+            THEN 'subject:' || trim(sso_subject)
+          ELSE 'wallet:' || token
+        END AS k
+      FROM wallet_registrations
+      WHERE registered_at IS NOT NULL
+    )
+    SELECT COUNT(*) AS count FROM participant_keys
+  `).first();
   return jsonResponse({ count: result?.count || 0 });
 }
 
