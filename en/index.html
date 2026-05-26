@@ -304,124 +304,64 @@
 <i aria-hidden="true" data-lucide="users" style="width:18px;height:18px"></i>
 <span id="signup-count">—</span> <span data-i18n="signup_counter_suffix">people have joined</span>
 </div>
-<form class="signup-form" data-i18n-attr="data-msg-error:signup_msg_error;data-msg-success:signup_msg_success" data-msg-error="Something went wrong. Please try again." data-msg-success="Check your email to confirm!" id="signup-form">
-<!-- 1. Code of Conduct -->
+<!-- ─── 1. Code of Conduct ─── -->
 <div class="coc-wrapper">
 <p class="coc-label" data-i18n="coc_label">Code of Conduct</p>
 <div aria-label="Code of Conduct" class="coc-frame" data-i18n-attr="aria-label:coc_frame_aria_label" id="coc-frame" role="region" tabindex="0"></div>
 <p class="coc-scroll-hint" data-error="Unable to load the Code of Conduct. Please refresh and try again." data-i18n="coc_scroll_hint" data-i18n-attr="data-error:coc_load_error" id="coc-scroll-hint">Scroll to the bottom to accept</p>
-<label class="coc-accept" hidden="" id="coc-accept-label">
+<label class="coc-accept" hidden id="coc-accept-label">
 <input id="coc-checkbox" type="checkbox"/>
 <span data-i18n="coc_accept_label">I have read and accept the Code of Conduct</span>
 </label>
 </div>
-<!-- 2. Role selector -->
+<!-- ─── 2. Role selector ─── -->
 <div class="role-selector">
 <p class="role-selector__label" data-i18n="signup_role_label">Join as:</p>
 <div class="role-options">
 <label class="role-option role-option--default">
-<input checked="" name="membership-type" type="radio" value="observer"/>
+<input checked name="membership-type" type="radio" value="observer"/>
 <span class="role-option__name" data-i18n="role_observer">Observer</span>
 <span class="role-option__badge" data-i18n="role_default">Default</span>
 </label>
-<label class="role-option role-option--disabled">
-<input disabled="" name="membership-type" type="radio" value="contributor"/>
+<label class="role-option">
+<input name="membership-type" type="radio" value="contributor"/>
 <span class="role-option__name" data-i18n="role_contributor">Contributor</span>
-<span class="coming-soon" data-i18n="role_coming_soon">Coming soon</span>
 </label>
-<label class="role-option role-option--disabled">
-<input disabled="" name="membership-type" type="radio" value="organiser"/>
+<label class="role-option">
+<input name="membership-type" type="radio" value="organiser"/>
 <span class="role-option__name" data-i18n="role_organiser">Organiser</span>
-<span class="coming-soon" data-i18n="role_coming_soon">Coming soon</span>
 </label>
 </div>
 </div>
-<!-- 4. Email + CAPTCHA + submit -->
-<input aria-label="Email address" autocomplete="email" data-i18n-attr="aria-label:join_email_aria;placeholder:join_email_placeholder" placeholder="Your email address" required="" type="email"/>
+<!-- ─── 3. PRIMARY: Wallet Registration ─── -->
+<div class="wallet-register-block">
+<h3>Register with Jomhoor</h3>
+<p>Verify your identity privately using the Jomhoor app — no email required.</p>
+<div id="jomhoor-register">
+<button class="btn btn-primary wallet-register__btn" disabled id="wallet-register-btn" type="button">Register with Jomhoor</button>
+<div class="wallet-register__qr-wrap" hidden id="wallet-qr-wrap">
+<p>Scan with Jomhoor app on your phone:</p>
+<div class="wallet-register__qr" id="wallet-qr"></div>
+<p class="wallet-register__status-hint">Waiting for scan…</p>
+</div>
+<div class="wallet-register__stores">
+<span>Don’t have the app?</span>
+<a href="https://apps.apple.com/app/id6770843571" rel="noopener noreferrer" target="_blank">iOS App Store</a>
+·
+<a href="https://play.google.com/store/apps/details?id=org.jomhoor.app" rel="noopener noreferrer" target="_blank">Android Play Store</a>
+</div>
+</div>
+</div>
+<!-- ─── 4. SECONDARY: Email notification (collapsed, gated by CoC) ─── -->
+<div class="wallet-or-divider">
+<span>or <button class="email-toggle-btn" disabled id="email-notify-toggle" type="button">get email updates</button></span>
+</div>
+<form class="signup-form signup-form--compact" data-msg-error="Something went wrong. Please try again." data-msg-success="Check your email to confirm!" hidden id="signup-form">
+<input aria-label="Email address" autocomplete="email" data-i18n-attr="aria-label:join_email_aria;placeholder:join_email_placeholder" placeholder="Your email address" required type="email"/>
 <div class="cf-turnstile" data-sitekey="0x4AAAAAAC88vBvbQgEGVz66" data-theme="light"></div>
-<button data-i18n="x_join_as_volunteer" disabled="" type="submit">Join as Volunteer</button>
+<button disabled type="submit">Subscribe to updates</button>
 </form>
 <p aria-live="polite" class="signup-message" id="signup-message"></p>
-<div class="card-grid">
-<div class="card">
-<h3 data-i18n="tier_observer">Observer</h3>
-<p data-i18n="x_read_all_public_channels_watch_livestreams_self_jo">Follow public updates, read open channels, and watch livestreams.</p>
-</div>
-<div class="card">
-<h3 data-i18n="tier_participant">Contributor</h3>
-<p data-i18n="x_accept_code_of_conduct_write_in_channels_join_work">Accept the code of conduct, contribute ideas and discussion in channels, and join working groups. Coming soon.</p>
-</div>
-<div class="card">
-<h3 data-i18n="tier_verified">Organiser</h3>
-<p data-i18n="x_zkp_identity_verification_vote_in_formal_decisions">Take on a deeper coordinating role after identity verification and organiser onboarding. Coming soon.</p>
-</div>
-</div>
-<div class="cta-group mt-3">
-<a class="btn btn-primary" data-i18n="x_github_repository" href="https://github.com/tcfev/iran-digital-freedom-congress" rel="noopener noreferrer" target="_blank">GitHub Repository</a>
-<a class="btn btn-outline" data-i18n="x_follow_updates_on_x" href="https://x.com/DIFCongress" rel="noopener noreferrer" target="_blank">Follow Updates on X</a>
-</div>
-</div>
-</section>
-<!-- ─── PARTNERS ─── -->
-<section id="partners">
-<div class="container">
-<p class="section-label" data-i18n="partners_label">Coalition</p>
-<h2 data-i18n="partners_heading">Partners &amp; Ecosystem</h2>
-<h3 class="mt-2" data-i18n="x_core_partners">Core Partners</h3>
-<div class="card-grid">
-<div class="card">
-<h3 data-i18n="x_jomhoor">Jomhoor</h3>
-<p data-i18n="x_provides_civic_tech_infrastructure_for_democratic"><a data-i18n="x_jomhoor_2" href="https://jomhoor.org/en" rel="noopener noreferrer" target="_blank">Jomhoor</a> provides civic tech infrastructure for democratic participation and citizen agency.</p>
-<span class="tag" data-i18n="x_civic_tech">Civic Tech</span>
-</div>
-<div class="card">
-<h3 data-i18n="x_atlas_iran_tcf_e_v">Atlas Iran / TCF e.V.</h3>
-<p><a data-i18n="x_atlas_iran" href="https://atlasiran.github.io/Atlas-website/" rel="noopener noreferrer" target="_blank">Atlas Iran</a> maps civil society organizations. <a data-i18n="x_tcf_e_v" href="https://transcf.org" rel="noopener noreferrer" target="_blank">TCF e.V.</a> serves as legal custodian under German law.</p>
-<span class="tag" data-i18n="x_mapping_legal">Mapping + Legal</span>
-</div>
-</div>
-<h3 class="mt-3" data-i18n="tech_heading">Technology Stack</h3>
-<div class="table-wrap">
-<table>
-<caption data-i18n="x_technology_stack">Technology stack</caption>
-<thead>
-<tr><th data-i18n="x_layer">Layer</th><th data-i18n="tech_col_tool">Tool</th><th data-i18n="x_purpose">Purpose</th></tr>
-</thead>
-<tbody>
-<tr><td data-i18n="x_identity">Identity</td><td data-i18n="x_inid_sdk_rarimo_zk_passport">INID SDK + Rarimo ZK Passport</td><td data-i18n="x_prove_citizenship_without_revealing_identity">Prove citizenship without revealing identity</td></tr>
-<tr><td data-i18n="x_deliberation">Deliberation</td><td data-i18n="x_agora_polis_taraaz">Agora Polis / Taraaz</td><td data-i18n="x_consensus_mapping_at_scale">Consensus mapping at scale</td></tr>
-<tr><td data-i18n="x_voting">Voting</td><td data-i18n="x_iranians_vote_ranked_pairs">Iranians.Vote + Ranked Pairs</td><td data-i18n="x_anonymous_verifiable_optimal_decisions">Anonymous, verifiable, optimal decisions</td></tr>
-<tr><td data-i18n="x_communication">Communication</td><td data-i18n="x_slack">Slack</td><td data-i18n="x_organized_channels_threads_video_calls">Organized channels, threads, video calls</td></tr>
-<tr><td data-i18n="x_treasury">Treasury</td><td data-i18n="x_multi_sig_dexe_dao">Multi-Sig + DeXe DAO</td><td data-i18n="x_participatory_budgeting_transparent_funds">Participatory budgeting, transparent funds</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<!-- ─── ROADMAP ─── -->
-<section id="roadmap">
-<div class="container">
-<p class="section-label" data-i18n="roadmap_label">The Path Forward</p>
-<h2 data-i18n="roadmap_heading">Roadmap</h2>
-<div class="timeline">
-<div class="timeline-item">
-<h3 data-i18n="phase_0">Phase 0: Foundation (Now)</h3>
-<p data-i18n="x_assemble_founding_team_set_up_slack_workspace_draf">Assemble founding team · Set up Slack workspace · Draft charter · Contact first 20 organizations · Build this website</p>
-</div>
-<div class="timeline-item">
-<h3 data-i18n="phase_1">Phase 1: Launch Sprint (48 Hours)</h3>
-<p data-i18n="x_first_48_hour_sprint_9_working_groups_activate_liv">First 48-hour sprint · 9 working groups activate · Live Taraaz deliberation · Produce first outputs · Begin weekly rhythm</p>
-</div>
-<div class="timeline-item">
-<h3 data-i18n="phase_2">Phase 2: Scale (Months 1–6)</h3>
-<p data-i18n="x_open_verified_membership_first_cc_election_all_9_w">Open verified membership · First CC election · All 9 WGs active weekly · 1,000+ participants · Quarterly digital summits</p>
-</div>
-<div class="timeline-item">
-<h3 data-i18n="phase_3">Phase 3: Institutionalize (Year 2+)</h3>
-<p data-i18n="x_dao_activation_permanent_secretariat_annual_hybrid">DAO activation · Permanent secretariat · Annual hybrid summit · Constitutional proposals published · Replication toolkit</p>
-</div>
-</div>
-</div>
 </section>
 </main>
 <!-- ─── FOOTER ─── -->
@@ -471,6 +411,8 @@
 <script src="../js/main.js"></script>
 <script async="" defer="" src="https://challenges.cloudflare.com/turnstile/v0/api.js"></script>
 <script src="../js/signup.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="../js/jomhoor-register.js"></script>
 <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 <script>lucide.createIcons();</script>
 </body>
