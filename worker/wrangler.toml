@@ -10,3 +10,16 @@ database_id = "bce29688-65bf-44c6-8db7-b20747c60dd3"
 [vars]
 FRONTEND_URL = "https://difcongress.com"
 FROM_EMAIL = "hi@difcongress.com"
+# Jomhoor SSO — see worker/src/sso.js
+JOMHOOR_SSO_URL = "https://sso.jomhoor.org"
+# WORKER_URL = "https://congress-signup.difcongress.workers.dev"   # optional override
+
+[dev]
+port = 8787
+# FRONTEND_URL is overridden for local dev via .dev.vars (not wrangler.toml [dev.vars])
+# Create worker/.dev.vars with: FRONTEND_URL=http://localhost:8080
+
+# Secrets (set via `wrangler secret put`):
+#   JOMHOOR_CLIENT_SECRET   — bcrypt-hash of the value is what sso-svc stores
+#   RESEND_API_KEY
+#   TURNSTILE_SECRET_KEY

@@ -958,3 +958,228 @@ footer .copyright {
   }
   html { scroll-behavior: auto; }
 }
+
+/* ─── Wallet Registration Block ─────────────────────────────────────────────── */
+.wallet-register-block {
+  background: var(--bg-card);
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 480px;
+  margin: 2rem auto 0;
+  box-shadow: 0 4px 24px rgba(0,0,0,.06);
+  border: 1px solid var(--bg-secondary);
+  text-align: center;
+}
+.wallet-register-block h3 {
+  font-size: 1.2rem;
+  margin: 0 0 .4rem;
+  color: var(--text-primary);
+}
+.wallet-register-block > p {
+  color: var(--text-secondary);
+  font-size: .9375rem;
+  margin: 0 0 1.25rem;
+  line-height: 1.5;
+}
+.wallet-register__btn { width: 100%; }
+
+/* QR section (shown on button click, desktop only) */
+.wallet-register__qr-wrap { margin: 1.25rem 0 .5rem; }
+.wallet-register__qr-wrap > p {
+  font-size: .875rem;
+  color: var(--text-secondary);
+  margin: 0 0 .75rem;
+}
+.wallet-register__qr {
+  display: inline-block;
+  padding: 10px;
+  background: #fff;
+  border: 1px solid var(--bg-secondary);
+  border-radius: 8px;
+}
+.wallet-register__status-hint {
+  font-size: .8rem;
+  color: var(--text-muted);
+  margin: .6rem 0 0;
+  animation: wr-pulse 1.8s ease-in-out infinite;
+}
+@keyframes wr-pulse { 0%,100%{opacity:1} 50%{opacity:.35} }
+.wallet-register__expired { color: var(--error); font-size: .875rem; }
+
+/* App store links */
+.wallet-register__stores {
+  margin-top: 1rem;
+  font-size: .8rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+.wallet-register__stores a {
+  color: var(--accent-primary);
+  text-decoration: none;
+}
+.wallet-register__stores a:hover { text-decoration: underline; }
+
+/* Success state */
+.wallet-register__success { text-align: center; }
+.wallet-register__check {
+  font-size: 2.75rem;
+  color: var(--success);
+  margin-bottom: .25rem;
+}
+.wallet-register__success h3 {
+  color: var(--success);
+  font-size: 1.15rem;
+  margin: 0 0 .4rem;
+}
+.wallet-register__success > p {
+  color: var(--text-secondary);
+  font-size: .9375rem;
+  margin: 0 0 0;
+}
+
+/* Email collection (shown after success) */
+.wallet-register__email-form {
+  border-top: 1px solid var(--bg-secondary);
+  padding-top: 1.25rem;
+  margin-top: 1.25rem;
+}
+.wallet-register__email-form > p {
+  font-size: .875rem;
+  color: var(--text-secondary);
+  margin: 0 0 .6rem;
+}
+.wallet-register__email-row {
+  display: flex;
+  gap: .4rem;
+  max-width: 340px;
+  margin: 0 auto;
+}
+.wallet-register__email-row input {
+  flex: 1;
+  padding: 9px 12px;
+  border: 1.5px solid var(--bg-secondary);
+  border-radius: 8px;
+  font-size: .875rem;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  outline: none;
+  min-width: 0;
+}
+.wallet-register__email-row input:focus { border-color: var(--accent-primary); }
+.wallet-register__email-row button {
+  padding: 9px 16px;
+  background: var(--accent-gradient);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .875rem;
+  white-space: nowrap;
+}
+.wallet-register__email-row button:disabled { opacity: .6; cursor: default; }
+.wallet-register__email-msg {
+  font-size: .8rem;
+  margin: .4rem 0 0;
+  min-height: 1em;
+}
+.wallet-register__email-msg.success { color: var(--success); }
+.wallet-register__email-msg.error   { color: var(--error); }
+
+/* Divider between wallet block and email form */
+.wallet-or-divider {
+  position: relative;
+  text-align: center;
+  margin: 1.75rem auto .25rem;
+  max-width: 480px;
+}
+.wallet-or-divider::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0; right: 0;
+  height: 1px;
+  background: var(--bg-secondary);
+}
+.wallet-or-divider span {
+  position: relative;
+  background: var(--bg-primary);
+  padding: 0 1rem;
+  font-size: .8rem;
+  color: var(--text-muted);
+}
+
+/* ── Email-toggle button (looks like a link) ─────────────────────── */
+.email-toggle-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: .8rem;
+  color: var(--accent-primary);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.email-toggle-btn:hover { color: var(--accent-secondary); }
+
+/* ── Compact email-notify form (shown only after toggle) ─────────── */
+.signup-form--compact {
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+  max-width: 480px;
+  margin: 1rem auto 0;
+  text-align: left;
+}
+.signup-form--compact input[type="email"] {
+  width: 100%;
+  padding: .75rem 1rem;
+  border: 1.5px solid var(--bg-secondary);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--bg-card);
+  color: var(--text-primary);
+  box-sizing: border-box;
+}
+.signup-form--compact input[type="email"]:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+.signup-form--compact button[type="submit"] {
+  padding: .75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  background: var(--accent-gradient);
+  color: #fff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: opacity .2s;
+}
+.signup-form--compact button[type="submit"]:disabled {
+  opacity: .55;
+  cursor: default;
+}
+
+/* ── Inline CoC acceptance (simple checkbox + link) ─────────────── */
+.coc-simple {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  font-size: .875rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-align: left;
+}
+.coc-simple input[type="checkbox"] {
+  margin-top: .15em;
+  flex-shrink: 0;
+  accent-color: var(--accent-primary);
+  width: 1rem;
+  height: 1rem;
+}

@@ -1,5 +1,6 @@
 // Congress Signup Worker — Cloudflare Workers + D1 + Resend
 import { contributorEmailHtml, organiserEmailHtml, verificationEmailHtml } from './emails.js';
+import { handleSsoStart, handleSsoCallback, handleGuestInit, handleGuestPoll, handleGuestCallback, handleGuestEmail, guestCors } from './sso.js';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': 'https://difcongress.com',
@@ -48,7 +49,11 @@ export default {
 
     // CORS preflight
     if (request.method === 'OPTIONS') {
-      return new Response(null, { status: 204, headers: CORS_HEADERS });
+      const isGuest = url.pathname.startsWith('/api/sso/guest/');
+      const headers = isGuest
+        ? { ...guestCors(request), 'Access-Control-Allow-Methods': 'GET, POST, OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type' }
+        : CORS_HEADERS;
+      return new Response(null, { status: 204, headers });
     }
 
     try {
@@ -60,6 +65,26 @@ export default {
       }
       if (url.pathname === '/api/count' && request.method === 'GET') {
         return await handleCount(env);
+      }
+      // Jomhoor SSO — see worker/src/sso.js
+      if (url.pathname === '/api/sso/start' && request.method === 'GET') {
+        return await handleSsoStart(url, env);
+      }
+      if (url.pathname === '/api/sso/callback' && request.method === 'GET') {
+        return await handleSsoCallback(url, env);
+      }
+      // Jomhoor SSO — guest (wallet-first) endpoints
+      if (url.pathname === '/api/sso/guest/init' && request.method === 'POST') {
+        return await handleGuestInit(request, env);
+      }
+      if (url.pathname === '/api/sso/guest/poll' && request.method === 'GET') {
+        return await handleGuestPoll(request, env);
+      }
+      if (url.pathname === '/api/sso/guest/callback' && request.method === 'GET') {
+        return await handleGuestCallback(url, env);
+      }
+      if (url.pathname === '/api/sso/guest/email' && request.method === 'POST') {
+        return await handleGuestEmail(request, env);
       }
       return jsonResponse({ error: 'Not found' }, 404);
     } catch (err) {
@@ -220,7 +245,11 @@ async function sendVerificationEmail(email, token, env) {
 
 // ─── Send step-2 role-specific email (after verification) ───
 async function sendRoleEmail(email, membershipType, token, env) {
-  const zkpUrl = `https://app.jomhoor.org/zkp?token=${encodeURIComponent(email)}+${token}`;
+  // Jomhoor SSO entry point on THIS worker. /api/sso/start looks up the signup
+  // by token, allocates PKCE, and 302s to sso.jomhoor.org. See worker/src/sso.js.
+  const workerBase = env.WORKER_URL
+    || `https://congress-signup.${env.CF_ACCOUNT_SUBDOMAIN || 'workers'}.workers.dev`;
+  const zkpUrl = `${workerBase}/api/sso/start?token=${encodeURIComponent(token)}`;
   const qrImageUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(zkpUrl)}`;
 
   const subjects = {
