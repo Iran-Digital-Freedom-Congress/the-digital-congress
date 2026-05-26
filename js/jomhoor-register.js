@@ -10,6 +10,7 @@
   const API_BASE  = IS_LOCAL
     ? 'http://localhost:8787'
     : 'https://congress-signup.difcongress.workers.dev';
+  const HALL_URL  = 'https://hall.difcongress.com';
   const IOS_URL  = 'https://apps.apple.com/app/id6770843571';
   const AND_URL  = 'https://play.google.com/store/apps/details?id=org.jomhoor.app';
 
@@ -103,11 +104,21 @@
     const container = document.getElementById('jomhoor-register');
     if (!container) return;
 
+    const REDIRECT_SECONDS = 5;
+
     container.innerHTML = `
       <div class="wallet-register__success">
         <div class="wallet-register__check">✓</div>
         <h3>Your Jomhoor wallet is registered</h3>
-        <p>You will soon be able to log in to the Congress Townhall.</p>
+        <p>Your Congress Hall login is ready. Redirecting now...</p>
+        <p id="wallet-hall-countdown" class="wallet-register__countdown">
+          Continuing to the Hall in ${REDIRECT_SECONDS}s...
+        </p>
+        <div class="wallet-register__actions">
+          <a id="wallet-go-hall" class="wallet-register__go-hall" href="${HALL_URL}">
+            Continue to Congress Hall
+          </a>
+        </div>
         <div class="wallet-register__email-form">
           <p>Get notified when the Congress begins:</p>
           <div class="wallet-register__email-row">
@@ -118,6 +129,23 @@
           <p id="wallet-email-msg" class="wallet-register__email-msg" aria-live="polite"></p>
         </div>
       </div>`;
+
+    const countdownEl = document.getElementById('wallet-hall-countdown');
+    let secondsLeft = REDIRECT_SECONDS;
+    const countdownTimer = window.setInterval(() => {
+      secondsLeft -= 1;
+      if (!countdownEl) return;
+      if (secondsLeft <= 0) {
+        countdownEl.textContent = 'Redirecting...';
+        window.clearInterval(countdownTimer);
+        return;
+      }
+      countdownEl.textContent = `Continuing to the Hall in ${secondsLeft}s...`;
+    }, 1000);
+
+    window.setTimeout(() => {
+      window.location.assign(HALL_URL);
+    }, REDIRECT_SECONDS * 1000);
 
     const btn   = document.getElementById('wallet-email-btn');
     const input = document.getElementById('wallet-email-input');
