@@ -68,6 +68,13 @@ function parseJwtSub(token) {
   }
 }
 
+function isCompletedWalletSubjectConflict(error) {
+  const message = String(error?.message || error || '');
+  return message.includes('wallet_registrations_completed_subject_uidx')
+    || message.includes('wallet_registrations.sso_subject')
+    || message.includes('UNIQUE constraint failed');
+}
+
 // ─── GET /api/sso/start?token=<signup_token> ───────────────────────────────────
 
 export async function handleSsoStart(url, env) {
@@ -397,15 +404,82 @@ export async function handleGuestCallback(url, env) {
 
   const now = Math.floor(Date.now() / 1000);
 
+  const existingRegistration = await env.DB.prepare(
+    `SELECT token
+       FROM wallet_registrations
+      WHERE sso_subject = ?
+        AND registered_at IS NOT NULL
+        AND token != ?
+      ORDER BY registered_at ASC, created_at ASC
+      LIMIT 1`
+  ).bind(subject, pkce.signup_token).first();
+
+  if (existingRegistration) {
+    // Make wallet-first registration idempotent: repeated SSO completions for the
+    // same Jomhoor subject resolve to the first completed DIFCongress registration.
+    await env.DB.batch([
+      env.DB.prepare(
+        `UPDATE sso_pkce
+            SET signup_token = ?, completed_at = ?
+          WHERE state = ?`
+      ).bind(existingRegistration.token, now, state),
+      env.DB.prepare(
+        `DELETE FROM wallet_registrations
+          WHERE token = ?
+            AND registered_at IS NULL`
+      ).bind(pkce.signup_token),
+    ]);
+
+    const frontendUrl = env.FRONTEND_URL || 'https://difcongress.com';
+    const dest = `${frontendUrl}?wallet_registered=1&token=${encodeURIComponent(existingRegistration.token)}`;
+    return Response.redirect(dest, 302);
+  }
+
   // Stamp wallet_registrations (don't delete the PKCE row — poll needs it).
-  await env.DB.batch([
-    env.DB.prepare(
-      `UPDATE wallet_registrations SET sso_subject = ?, registered_at = ? WHERE token = ?`
-    ).bind(subject, now, pkce.signup_token),
-    env.DB.prepare(
-      `UPDATE sso_pkce SET completed_at = ? WHERE state = ?`
-    ).bind(now, state),
-  ]);
+  try {
+    await env.DB.batch([
+      env.DB.prepare(
+        `UPDATE wallet_registrations SET sso_subject = ?, registered_at = ? WHERE token = ?`
+      ).bind(subject, now, pkce.signup_token),
+      env.DB.prepare(
+        `UPDATE sso_pkce SET completed_at = ? WHERE state = ?`
+      ).bind(now, state),
+    ]);
+  } catch (error) {
+    if (!isCompletedWalletSubjectConflict(error)) {
+      throw error;
+    }
+
+    const canonicalRegistration = await env.DB.prepare(
+      `SELECT token
+         FROM wallet_registrations
+        WHERE sso_subject = ?
+          AND registered_at IS NOT NULL
+        ORDER BY registered_at ASC, created_at ASC, token ASC
+        LIMIT 1`
+    ).bind(subject).first();
+
+    if (!canonicalRegistration) {
+      throw error;
+    }
+
+    await env.DB.batch([
+      env.DB.prepare(
+        `UPDATE sso_pkce
+            SET signup_token = ?, completed_at = ?
+          WHERE state = ?`
+      ).bind(canonicalRegistration.token, now, state),
+      env.DB.prepare(
+        `DELETE FROM wallet_registrations
+          WHERE token = ?
+            AND registered_at IS NULL`
+      ).bind(pkce.signup_token),
+    ]);
+
+    const frontendUrl = env.FRONTEND_URL || 'https://difcongress.com';
+    const dest = `${frontendUrl}?wallet_registered=1&token=${encodeURIComponent(canonicalRegistration.token)}`;
+    return Response.redirect(dest, 302);
+  }
 
   // Redirect back to difcongress.com so the page shows inline success.
   const frontendUrl = env.FRONTEND_URL || 'https://difcongress.com';
