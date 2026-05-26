@@ -14,6 +14,120 @@
   const IOS_URL  = 'https://apps.apple.com/app/id6770843571';
   const AND_URL  = 'https://play.google.com/store/apps/details?id=org.jomhoor.app';
 
+  const I18N = {
+    en: {
+      registerButton: 'Register with Jomhoor',
+      successTitle: 'Your Jomhoor wallet is registered',
+      successReady: 'Your Congress Hall login is ready. Redirecting now...',
+      countdown: 'Continuing to the Hall in {seconds}s...',
+      redirecting: 'Redirecting...',
+      continueHall: 'Continue to Congress Hall',
+      notifyPrompt: 'Get notified when the Congress begins:',
+      emailPlaceholder: 'your@email.com',
+      notifyBtn: 'Notify me',
+      done: 'Done!',
+      somethingWentWrong: 'Something went wrong.',
+      networkError: 'Network error. Please try again.',
+      qrExpired: 'QR expired. Refresh the page to try again.',
+    },
+    fa: {
+      registerButton: 'ثبت‌نام با جمهور',
+      successTitle: 'کیف پول جمهور شما ثبت شد',
+      successReady: 'ورود شما به Congress Hall آماده است. در حال انتقال...',
+      countdown: 'ورود به Hall تا {seconds} ثانیه دیگر...',
+      redirecting: 'در حال انتقال...',
+      continueHall: 'ورود به Congress Hall',
+      notifyPrompt: 'برای شروع کنگره اطلاع‌رسانی دریافت کنید:',
+      emailPlaceholder: 'you@example.com',
+      notifyBtn: 'به من اطلاع بده',
+      done: 'انجام شد!',
+      somethingWentWrong: 'مشکلی پیش آمد.',
+      networkError: 'خطای شبکه. دوباره تلاش کنید.',
+      qrExpired: 'کد QR منقضی شد. صفحه را تازه کنید و دوباره تلاش کنید.',
+    },
+    ar: {
+      registerButton: 'التسجيل عبر جمهور',
+      successTitle: 'تم تسجيل محفظة جمهور الخاصة بك',
+      successReady: 'تسجيل دخولك إلى Congress Hall جاهز. جارٍ التحويل...',
+      countdown: 'المتابعة إلى Hall خلال {seconds} ثانية...',
+      redirecting: 'جارٍ التحويل...',
+      continueHall: 'المتابعة إلى Congress Hall',
+      notifyPrompt: 'احصل على إشعار عند بدء المؤتمر:',
+      emailPlaceholder: 'you@example.com',
+      notifyBtn: 'أبلغني',
+      done: 'تم!',
+      somethingWentWrong: 'حدث خطأ ما.',
+      networkError: 'خطأ في الشبكة. حاول مرة أخرى.',
+      qrExpired: 'انتهت صلاحية رمز QR. حدّث الصفحة وحاول مرة أخرى.',
+    },
+    ku: {
+      registerButton: 'تۆماربوون بە جمهور',
+      successTitle: 'کیف‌پوڵی جمهورەکەت تۆمارکرا',
+      successReady: 'چوونەژوورەوەی تۆ بۆ Congress Hall ئامادەیە. ئێستا دەگوازرێیتەوە...',
+      countdown: 'چوون بۆ Hall لە {seconds} چرکەدا...',
+      redirecting: 'لە گواستنەوەدایە...',
+      continueHall: 'بەردەوامبوون بۆ Congress Hall',
+      notifyPrompt: 'کاتێک کۆنگرە دەستپێدەکات ئاگادارم بکەوە:',
+      emailPlaceholder: 'you@example.com',
+      notifyBtn: 'ئاگادارم بکەوە',
+      done: 'تەواو!',
+      somethingWentWrong: 'هەڵەیەک ڕوویدا.',
+      networkError: 'هەڵەی تۆڕ. تکایە دووبارە هەوڵ بدەوە.',
+      qrExpired: 'کۆدی QR بەسەرچوو. لاپەڕەکە نوێ بکەرەوە و دووبارە هەوڵ بدە.',
+    },
+    bal: {
+      registerButton: 'جمھور ءِ رھسرا ثبت‌نام بکن اِت',
+      successTitle: 'جمھور ءِ وتی والیٹ ثبت بوت',
+      successReady: 'وتی Congress Hall ءِ لاگین تیار اِنت. اَنتقال جاری اِنت...',
+      countdown: '{seconds} سیکنڈ ءِ پَد Hall ءَ روو اِنت...',
+      redirecting: 'اَنتقال جاری اِنت...',
+      continueHall: 'Congress Hall ءَ روو بکن اِت',
+      notifyPrompt: 'کانگرس ءِ شروٗع ءَ دێت، مرا خبردار بکن اِت:',
+      emailPlaceholder: 'you@example.com',
+      notifyBtn: 'مرا خبر بکن اِت',
+      done: 'بوت!',
+      somethingWentWrong: 'یک ہلاسی بوت.',
+      networkError: 'نیٹورک ءِ ہلاسی. دویم ہیل بکن اِت.',
+      qrExpired: 'QR منقضی بوت. صفحہ ءَ تازه بکن اِت ءُ دویم ہیل بکن اِت.',
+    },
+    az: {
+      registerButton: 'Jomhoor ilə qeydiyyat',
+      successTitle: 'Jomhoor cüzdanınız qeydiyyatdan keçdi',
+      successReady: 'Congress Hall girişiniz hazırdır. İndi yönləndirilirsiniz...',
+      countdown: '{seconds} san sonra Hall-a keçid ediləcək...',
+      redirecting: 'Yönləndirilir...',
+      continueHall: 'Congress Hall-a davam et',
+      notifyPrompt: 'Konqres başlayanda xəbər alın:',
+      emailPlaceholder: 'you@example.com',
+      notifyBtn: 'Mənə xəbər ver',
+      done: 'Hazırdır!',
+      somethingWentWrong: 'Bir xəta baş verdi.',
+      networkError: 'Şəbəkə xətası. Zəhmət olmasa yenidən yoxlayın.',
+      qrExpired: 'QR vaxtı bitib. Səhifəni yeniləyin və yenidən cəhd edin.',
+    },
+  };
+
+  function currentLocale() {
+    const lang = (document.documentElement.lang || 'en').toLowerCase();
+    if (lang.startsWith('ckb')) return 'ku';
+    if (lang.startsWith('ku')) return 'ku';
+    if (lang.startsWith('fa')) return 'fa';
+    if (lang.startsWith('ar')) return 'ar';
+    if (lang.startsWith('bal')) return 'bal';
+    if (lang.startsWith('az')) return 'az';
+    return 'en';
+  }
+
+  function t(key, vars = {}) {
+    const locale = currentLocale();
+    const table = I18N[locale] || I18N.en;
+    let value = table[key] || I18N.en[key] || '';
+    Object.keys(vars).forEach((name) => {
+      value = value.replace(`{${name}}`, String(vars[name]));
+    });
+    return value;
+  }
+
   // ─── Device detection ──────────────────────────────────────────────────────
   function isMobile() {
     return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -119,22 +233,22 @@
     container.innerHTML = `
       <div class="wallet-register__success">
         <div class="wallet-register__check">✓</div>
-        <h3>Your Jomhoor wallet is registered</h3>
-        <p>Your Congress Hall login is ready. Redirecting now...</p>
+        <h3>${t('successTitle')}</h3>
+        <p>${t('successReady')}</p>
         <p id="wallet-hall-countdown" class="wallet-register__countdown">
-          Continuing to the Hall in ${REDIRECT_SECONDS}s...
+          ${t('countdown', { seconds: REDIRECT_SECONDS })}
         </p>
         <div class="wallet-register__actions">
           <a id="wallet-go-hall" class="wallet-register__go-hall" href="${HALL_URL}">
-            Continue to Congress Hall
+            ${t('continueHall')}
           </a>
         </div>
         <div class="wallet-register__email-form">
-          <p>Get notified when the Congress begins:</p>
+          <p>${t('notifyPrompt')}</p>
           <div class="wallet-register__email-row">
             <input id="wallet-email-input" type="email"
-              placeholder="your@email.com" autocomplete="email">
-            <button id="wallet-email-btn" type="button">Notify me</button>
+              placeholder="${t('emailPlaceholder')}" autocomplete="email">
+            <button id="wallet-email-btn" type="button">${t('notifyBtn')}</button>
           </div>
           <p id="wallet-email-msg" class="wallet-register__email-msg" aria-live="polite"></p>
         </div>
@@ -146,11 +260,11 @@
       secondsLeft -= 1;
       if (!countdownEl) return;
       if (secondsLeft <= 0) {
-        countdownEl.textContent = 'Redirecting...';
+        countdownEl.textContent = t('redirecting');
         window.clearInterval(countdownTimer);
         return;
       }
-      countdownEl.textContent = `Continuing to the Hall in ${secondsLeft}s...`;
+      countdownEl.textContent = t('countdown', { seconds: secondsLeft });
     }, 1000);
 
     window.setTimeout(() => {
@@ -174,16 +288,16 @@
         });
         const data = await res.json();
         if (res.ok) {
-          msg.textContent = '✓ ' + (data.message || 'Done!');
+          msg.textContent = '✓ ' + (data.message || t('done'));
           msg.className = 'wallet-register__email-msg success';
           input.disabled = true;
         } else {
-          msg.textContent = data.error || 'Something went wrong.';
+          msg.textContent = data.error || t('somethingWentWrong');
           msg.className = 'wallet-register__email-msg error';
           btn.disabled = false;
         }
       } catch {
-        msg.textContent = 'Network error. Please try again.';
+        msg.textContent = t('networkError');
         msg.className = 'wallet-register__email-msg error';
         btn.disabled = false;
       }
@@ -206,7 +320,7 @@
       ()      => {
         stopPolling();
         if (qrEl) {
-          qrEl.innerHTML = '<p class="wallet-register__expired">QR expired. Refresh the page to try again.</p>';
+          qrEl.innerHTML = `<p class="wallet-register__expired">${t('qrExpired')}</p>`;
         }
       }
     );
@@ -216,6 +330,8 @@
   function initButton() {
     const btn = document.getElementById('wallet-register-btn');
     if (!btn) return;
+    const defaultLabel = btn.dataset.label || btn.textContent.trim() || t('registerButton');
+    btn.dataset.label = defaultLabel;
 
     btn.addEventListener('click', async () => {
       btn.disabled   = true;
@@ -235,7 +351,7 @@
         authorizeUrl = data.authorize_url;
       } catch {
         btn.disabled   = false;
-        btn.textContent = btn.dataset.label || 'Register with Jomhoor';
+        btn.textContent = btn.dataset.label || t('registerButton');
         return;
       }
 
