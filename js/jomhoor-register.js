@@ -28,15 +28,25 @@
     return 'observer';
   }
 
-  function unlockMembershipOptions() {
+  function enforceObserverOnlyMembership() {
     document.querySelectorAll('input[name="membership-type"]').forEach((input) => {
-      input.disabled = false;
+      const isObserver = input.value === 'observer';
+      input.disabled = !isObserver;
+      if (isObserver) {
+        input.checked = true;
+      }
+
+      const option = input.closest('.role-option');
+      if (!option) return;
+      if (isObserver) {
+        option.classList.remove('role-option--disabled');
+      } else {
+        option.classList.add('role-option--disabled');
+      }
     });
-    document.querySelectorAll('.role-option--disabled').forEach((el) => {
-      el.classList.remove('role-option--disabled');
-    });
+
     document.querySelectorAll('.coming-soon').forEach((el) => {
-      el.hidden = true;
+      el.hidden = false;
     });
   }
 
@@ -242,7 +252,7 @@
 
   // ─── Boot ──────────────────────────────────────────────────────────────────
   function init() {
-    unlockMembershipOptions();
+    enforceObserverOnlyMembership();
     if (!checkReturnParam()) {
       initButton();
     }
